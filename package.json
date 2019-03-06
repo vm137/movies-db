@@ -1,0 +1,23 @@
+{
+  "name": "movies-db",
+  "version": "1.0.0",
+  "description": "react-redux movies database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vm137/movies-db.git"
+  },
+  "keywords": [],
+  "author": "Victor Mikhaylov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vm137/movies-db/issues"
+  },
+  "homepage": "https://github.com/vm137/movies-db#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
+}
