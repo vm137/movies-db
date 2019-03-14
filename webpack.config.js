@@ -1,31 +1,45 @@
-let path = require('path');
+const path = require('path');
 
-module.exports = env => {
-    console.log('env: ', env);
+const config = {
+  entry: path.resolve(__dirname, 'src/client/index'),
+  output: {
+    path: `${__dirname}/dist`,
+    publicPath: '/',
+    filename: 'bundle.js',
+  },
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public'),
+  },
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: 'babel-loader',
+      },
+      {
+        test: /\.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.(png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {},
+          },
+        ],
+      },
+    ],
+  },
+};
 
-    return {
-        entry: path.resolve(__dirname, 'src/client/index'),
-        output: {
-            path: __dirname + '/dist',
-            publicPath: '/',
-            filename: 'bundle.js'
-        },
-        devServer: {
-            contentBase: path.resolve(__dirname, 'public')
-        },
-        module: {
-            rules: [
-                {
-                    test: /\.js$/,
-                    exclude: /node_modules/,
-                    loaders: ['babel-loader']
-                },
-                {
-                    test: /(\.css)$/,
-                    loaders: ['style-loader', 'css-loader']
-                }
-            ]
-        },
-        mode: (env === 'prod') ? 'production' : 'development'
-    };
+module.exports = (env, argv) => {
+  if (argv.mode === 'production') {
+    config.mode = 'production';
+  } else {
+    config.mode = 'development';
+  }
+
+  return config;
 };
