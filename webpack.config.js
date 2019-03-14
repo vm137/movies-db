@@ -5,7 +5,7 @@ const config = {
   output: {
     path: `${__dirname}/dist`,
     publicPath: '/',
-    filename: 'bundle.js',
+    filename: 'bundle.js'
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
@@ -15,7 +15,7 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: 'babel-loader'
       },
       {
         test: /\.s?css$/,
@@ -26,18 +26,20 @@ const config = {
         use: [
           {
             loader: 'file-loader',
-            options: {},
-          },
-        ],
-      },
-    ],
-  },
+            options: {}
+          }
+        ]
+      }
+    ]
+  }
 };
 
 module.exports = (env, argv) => {
+
   if (argv.mode === 'production') {
     config.mode = 'production';
-  } else {
+  }
+  if (argv.mode === 'development') {
     config.mode = 'development';
   }
 
