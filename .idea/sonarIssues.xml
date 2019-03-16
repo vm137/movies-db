@@ -13,12 +13,22 @@
             <set />
           </value>
         </entry>
+        <entry key="$APPLICATION_CONFIG_DIR$/scratches/scratch.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/../edp/.eslintrc">
           <value>
             <set />
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/.babelrc">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/.editorconfig">
           <value>
             <set />
           </value>
@@ -63,6 +73,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/package-lock.json">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/package.json">
           <value>
             <set />
@@ -84,6 +99,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/client/components/App.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/client/components/ErrorBoundary/ErrorBoundary.js">
           <value>
             <set />
           </value>
@@ -119,6 +139,16 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/client/components/SearchScreen/SearchScreen.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/client/components/constants/data.js">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/client/img/enter-arrow.svg">
           <value>
             <set />
           </value>

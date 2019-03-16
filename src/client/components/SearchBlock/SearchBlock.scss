@@ -1,0 +1,99 @@
+.search-block-wrapper {
+    height: 200px;
+    position: relative;
+
+    &::after {
+        content: "";
+        background: url('../../img/old-cinema.png');
+        opacity: 0.8;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        position: absolute;
+        z-index: -1;
+    }
+
+    .search-block {
+        position: absolute;
+        top: 50px;
+        left: 5%;
+        width: 90%;
+
+        .find-title {
+            margin-top: 12px;
+            color: #fff;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            text-shadow: 1px 1px 2px rgb(0, 0, 0);
+        }
+
+        .input-wrapper {
+            position: relative;
+            margin-top: 8px;
+
+            .search-input {
+                width: 100%;
+                height: 28px;
+                margin-top: 12px;
+                color: #fff;
+                padding-left: 12px;
+                padding-bottom: 4px;
+                border: none;
+                border-bottom: 1px #ff594b solid;
+                outline: none;
+                font-size: 14px;
+                box-sizing: border-box;
+                background-color: #1d1d1d;
+            }
+
+            .img-arrow {
+                position: absolute;
+                width: 20px;
+                top: 16px;
+                right: 8px;
+            }
+        }
+
+        .search-buttons {
+            margin-top: 22px;
+
+            .search-by {
+                color: #fff;
+                font-size: 12px;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                text-transform: uppercase;
+            }
+            .btns-search {
+                border: 0;
+                color: #fff;
+                width: 90px;
+                height: 26px;
+                border-radius: 4px;
+                outline: none;
+                font-size: 12px;
+                font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+                text-transform: uppercase;
+
+                &:hover {
+                    background-color: azure;
+                }
+                &:active {
+                    background-color: black;
+                }
+            }
+            .btn-title {
+                margin-left: 10px;
+            }
+            .btn-genre {
+                margin-left: 16px;
+            }
+            .btn-search {
+                float: right;
+                background-color: #ff594b;
+            }
+        }
+    }
+}
+
