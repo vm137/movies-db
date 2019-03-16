@@ -77,10 +77,10 @@
                 text-transform: uppercase;
 
                 &:hover {
-                    background-color: azure;
+                    background-color: #ff866c;
                 }
                 &:active {
-                    background-color: black;
+                    background-color: grey;
                 }
             }
             .btn-title {
@@ -97,3 +97,5 @@
     }
 }
 
+.btn-bg-red {background-color: #ff594b !important;}
+.btn-bg-grey {background-color: #808080 !important;}

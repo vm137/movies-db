@@ -6,7 +6,10 @@ export default class SearchBlock extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            movies: [],
+            searchByButtons: true
+        };
     }
 
     componentDidMount() {
@@ -21,14 +24,15 @@ export default class SearchBlock extends Component {
             });
     }
 
+    changeButtonsColor() {
+        this.setState({searchByButtons: !this.state.searchByButtons});
+    }
+
     render() {
-        const btnRed = {backgroundColor: '#ff594b'};
-        const btnGrey = {backgroundColor: 'grey'};
 
         return (
           <div className="search-block-wrapper">
             <div className="search-block">
-
               <p className="find-title">find your movie</p>
 
               <div className="input-wrapper">
@@ -38,8 +42,14 @@ export default class SearchBlock extends Component {
 
               <div className="search-buttons">
                 <span className="search-by">search by</span>
-                <button style={btnRed} className="btns-search btn-title" type="button">title</button>
-                <button style={btnGrey} className="btns-search btn-genre" type="button">genre</button>
+                <button
+                  className={`btns-search btn-title ${this.state.searchByButtons ? "btn-bg-red" : "btn-bg-grey"}`}
+                  onClick={this.changeButtonsColor.bind(this)}
+                  type="button">title</button>
+                <button
+                  className={`btns-search btn-genre ${!this.state.searchByButtons ? "btn-bg-red" : "btn-bg-grey"}`}
+                  onClick={this.changeButtonsColor.bind(this)}
+                  type="button">genre</button>
 
                 <button className="btns-search btn-search" type="submit">search</button>
               </div>
