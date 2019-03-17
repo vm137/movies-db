@@ -123,6 +123,11 @@
             <set />
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/src/client/components/MainWindow/MainWindow.js">
+          <value>
+            <set />
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/src/client/components/SearchBlock/SearchBlock.js">
           <value>
             <set />
@@ -144,6 +149,11 @@
           </value>
         </entry>
         <entry key="$PROJECT_DIR$/src/client/components/SearchScreen/SearchScreen.scss">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/client/components/SingleMovie/SingleMovie.js">
           <value>
             <set />
           </value>

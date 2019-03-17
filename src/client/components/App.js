@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.scss';
 import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
-import Header from './Header/Header';
-import SearchBlock from './SearchBlock/SearchBlock';
+import MainWindow from './MainWindow/MainWindow';
 
 const App = () => {
     return (
       <div className='wrapper'>
-        <Header />
         <ErrorBoundary>
-          <SearchBlock />
+          <MainWindow />
         </ErrorBoundary>
 
         <div className="push" />

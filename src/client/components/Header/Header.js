@@ -2,9 +2,9 @@ import React from 'react';
 import './Header.scss';
 
 const Header = () => (
-  <header>
+  <React.Fragment>
     <p className="logo">netflixroulette</p>
-  </header>
+  </React.Fragment>
 );
 
 export default Header;
