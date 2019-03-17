@@ -1,34 +1,30 @@
 import React, {Component} from 'react';
 import SearchBlock from '../SearchBlock/SearchBlock';
 import SingleMovie from '../SingleMovie/SingleMovie';
-
 import './MainWindow.scss';
-import fakeData from "../constants/fakeData";
+
 
 export default class MainWindow extends Component {
 
     constructor(props) {
         super(props);
+        this.makeFetch = this.makeFetch.bind(this);
         this.state = {
-            searchBlock: true
+            searchBlock: true,
+            movies: []
         };
     }
 
-    componentWillMount() {
-        this.makeFetch();
-    }
+    makeFetch(searchString = '', searchBy = '', offset = '', limit = '') {
+        let callString = 'http://react-cdp-api.herokuapp.com/movies';
+        callString += `?search=${searchString}&searchBy=${searchBy}&offset=${offset}&limit=${limit}`;
 
-    makeFetch() {
         /* eslint-disable no-undef */
-        fetch("http://react-cdp-api.herokuapp.com/movies")
+        fetch(callString)
             .then(function (response) {
                 return response.json();
             })
-            .then(myJson => {
-                    // console.log(myJson);
-                    this.state.movies = myJson;
-                    console.log(this.state.movies);
-                }
+            .then(myJson => this.setState({movies: myJson.data})
             )
         //     .catch(
         //     (error) => {
@@ -43,7 +39,10 @@ export default class MainWindow extends Component {
     render() {
         return (
           <div>
-            { this.state.searchBlock ? <SearchBlock /> : <SingleMovie /> }
+            { this.state.searchBlock ?
+              <SearchBlock movies={this.state.movies} searchCB={this.makeFetch} /> :
+              <SingleMovie movie="single movie 1" movies={this.state.movies} />
+            }
           </div>
         );
     }

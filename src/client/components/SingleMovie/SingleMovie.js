@@ -14,7 +14,9 @@ export default class SingleMovie extends Component {
           <div>
             <h2>Single Movie.</h2>
 
-            <SearchResults />
+            {this.props.movie}
+
+            <SearchResults movies={this.props.movies} />
 
           </div>
         );

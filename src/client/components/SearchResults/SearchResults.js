@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import './SearchResults.scss';
 
-
 export default class SearchResults extends Component {
     constructor(props) {
         super(props);
@@ -9,10 +8,15 @@ export default class SearchResults extends Component {
     }
 
     render() {
+        const listMovies = (this.props.movies).map(movie =>
+          <li key={movie.id}>{movie.title} ({movie.genres.join(", ")})</li>
+        );
+
         return (
           <div className="results-wrapper">
             <h2>search results</h2>
-            <div>{this.props.data}</div>
+            <div>found: {this.props.movies.length}</div>
+            <ul>{listMovies}</ul>
           </div>
         );
     }

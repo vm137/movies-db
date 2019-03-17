@@ -10,7 +10,8 @@ export default class SearchBlock extends Component {
         super(props);
         this.state = {
             firstMount: true,
-            titleButtonSelected: true
+            titleButtonSelected: true,
+            inputValue: ''
         };
     }
 
@@ -20,8 +21,20 @@ export default class SearchBlock extends Component {
 
     makeSearch() {
         this.setState({firstMount: false});
+        const searchBy = this.state.titleButtonSelected ? 'title' : 'genres';
+        this.props.searchCB(this.state.inputValue, searchBy);
+    }
 
+    updateInputValue(evt) {
+        this.setState({
+            inputValue: evt.target.value
+        });
+    }
 
+    _handleKeyPress(e) {
+        if (e.key === 'Enter') {
+            this.makeSearch();
+        }
     }
 
     render() {
@@ -33,7 +46,13 @@ export default class SearchBlock extends Component {
                 <p className="find-title">find your movie</p>
 
                 <div className="input-wrapper">
-                  <input className="search-input" type="text" />
+                  <input
+                    value={this.state.inputValue}
+                    onChange={evt => this.updateInputValue(evt)}
+                    onKeyPress={this._handleKeyPress.bind(this)}
+                    className="search-input"
+                    type="text"
+                  />
                   <img className="img-arrow" src={enterArrow} alt="enter" />
                 </div>
 
@@ -61,7 +80,7 @@ export default class SearchBlock extends Component {
                 </div>
               </div>
             </div>
-            {!this.state.firstMount && <SearchResults data="sample data 1" />}
+            {!this.state.firstMount && <SearchResults movies={this.props.movies} />}
           </div>
         )
     }
