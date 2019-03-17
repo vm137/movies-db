@@ -15,7 +15,7 @@ export default class SearchResults extends Component {
         return (
           <div className="results-wrapper">
             <h2>search results</h2>
-            <div>found: {this.props.movies.length}</div>
+            <div>found: {this.props.foundMovies} (showing max 10)</div>
             <ul>{listMovies}</ul>
           </div>
         );

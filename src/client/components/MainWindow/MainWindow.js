@@ -11,6 +11,7 @@ export default class MainWindow extends Component {
         this.makeFetch = this.makeFetch.bind(this);
         this.state = {
             searchBlock: true,
+            foundMovies: 0,
             movies: []
         };
     }
@@ -24,7 +25,10 @@ export default class MainWindow extends Component {
             .then(function (response) {
                 return response.json();
             })
-            .then(myJson => this.setState({movies: myJson.data})
+            .then(myJson => {
+                this.setState({movies: myJson.data})
+                this.setState({foundMovies: myJson.total})
+            }
             )
         //     .catch(
         //     (error) => {
@@ -40,7 +44,7 @@ export default class MainWindow extends Component {
         return (
           <div>
             { this.state.searchBlock ?
-              <SearchBlock movies={this.state.movies} searchCB={this.makeFetch} /> :
+              <SearchBlock movies={this.state.movies} foundMovies={this.state.foundMovies} searchCB={this.makeFetch} /> :
               <SingleMovie movie="single movie 1" movies={this.state.movies} />
             }
           </div>

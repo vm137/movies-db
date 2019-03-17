@@ -80,7 +80,7 @@ export default class SearchBlock extends Component {
                 </div>
               </div>
             </div>
-            {!this.state.firstMount && <SearchResults movies={this.props.movies} />}
+            {!this.state.firstMount && <SearchResults movies={this.props.movies} foundMovies={this.props.foundMovies} />}
           </div>
         )
     }
