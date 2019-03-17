@@ -1,9 +1,28 @@
-body, p {
-  margin: 0;
+html, body {
+    height: 100%;
+}
+
+html, body, p {
+    margin: 0;
 }
 
 .wrapper {
-  position: relative;
-  width: 900px;
-  margin: 0 auto;
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+}
+
+#app {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.footer, .push {
+    height: 50px;
+}
+
+.footer {
+    width: 900px;
+    margin: 0 auto;
+    background-color: rgba(26, 34, 41, 0.73);
 }

@@ -7,12 +7,12 @@ import SearchBlock from './SearchBlock/SearchBlock';
 const App = () => {
     return (
       <div className='wrapper'>
+        <Header />
         <ErrorBoundary>
-          <Header />
           <SearchBlock />
-
-          { /* <Footer /> */ }
         </ErrorBoundary>
+
+        <div className="push" />
       </div>
     )
 };

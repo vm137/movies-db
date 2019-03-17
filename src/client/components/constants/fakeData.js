@@ -1,4 +1,4 @@
-const data = {
+const fakeData = {
   "data": [
     {
       "id": 337167,
@@ -187,4 +187,4 @@ const data = {
   "limit": 10
 };
 
-export default data;
+export default fakeData;

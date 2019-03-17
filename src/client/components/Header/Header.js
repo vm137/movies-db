@@ -1,6 +1,10 @@
 import React from 'react';
 import './Header.scss';
 
-const Header = () => <p className="header">netflixroulette</p>;
+const Header = () => (
+  <header>
+    <p className="logo">netflixroulette</p>
+  </header>
+);
 
 export default Header;
