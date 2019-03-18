@@ -2,10 +2,9 @@
   "name": "movies-db",
   "version": "1.0.0",
   "description": "react movie database",
-  "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --mode=development",
-    "build:prod": "webpack --mode=production",
+    "build": "webpack --mode=production",
     "lint": "eslint src",
     "test": "jest"
   },
@@ -18,7 +17,7 @@
     "database"
   ],
   "author": "Victor Mikhaylov",
-  "license": "ISC",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/vm137/movies-db/issues"
   },
