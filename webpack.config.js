@@ -5,7 +5,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'bundle.js',
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
@@ -15,7 +15,7 @@ const config = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: 'babel-loader'
+        use: 'babel-loader',
       },
       {
         test: /\.s?css$/,
@@ -23,15 +23,13 @@ const config = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {}
-          }
-        ]
-      }
-    ]
-  }
+        use: 'file-loader',
+      },
+    ],
+  },
+  resolve: {
+    extensions: ['js', 'jsx'],
+  },
 };
 
 module.exports = config;
