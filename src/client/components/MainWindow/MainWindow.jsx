@@ -26,8 +26,10 @@ export default class MainWindow extends Component {
                 return response.json();
             })
             .then(myJson => {
-                this.setState({movies: myJson.data})
-                this.setState({foundMovies: myJson.total})
+                this.setState({
+                    movies: myJson.data,
+                    foundMovies: myJson.total
+                })
             }
             )
         //     .catch(
