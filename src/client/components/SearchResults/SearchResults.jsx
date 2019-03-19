@@ -7,6 +7,7 @@ const SearchResults = ({ foundMovies, movies }) => (
     <h2>search results</h2>
     <div>
 found:
+      {' '}
       {foundMovies}
       {' '}
 (showing max 10)
