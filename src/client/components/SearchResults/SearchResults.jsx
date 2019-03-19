@@ -1,23 +1,27 @@
-import React, {Component} from 'react';
+import React from 'react';
 import './SearchResults.scss';
 
-export default class SearchResults extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
+const SearchResults = props => (
+  <div className="results-wrapper">
+    <h2>search results</h2>
+    <div>
+found:
+      {props.foundMovies}
+      {' '}
+(showing max 10)
+    </div>
+    <ul>
+      {(props.movies).map(movie => (
+        <li key={movie.id}>
+          {movie.title}
+          {' '}
+(
+          {movie.genres.join(', ')}
+)
+        </li>
+      ))}
+    </ul>
+  </div>
+);
 
-    render() {
-        const listMovies = (this.props.movies).map(movie =>
-          <li key={movie.id}>{movie.title} ({movie.genres.join(", ")})</li>
-        );
-
-        return (
-          <div className="results-wrapper">
-            <h2>search results</h2>
-            <div>found: {this.props.foundMovies} (showing max 10)</div>
-            <ul>{listMovies}</ul>
-          </div>
-        );
-    }
-}
+export default SearchResults;
