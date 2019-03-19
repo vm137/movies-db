@@ -1,17 +1,18 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import './SearchResults.scss';
 
-const SearchResults = props => (
+const SearchResults = ({ foundMovies, movies }) => (
   <div className="results-wrapper">
     <h2>search results</h2>
     <div>
 found:
-      {props.foundMovies}
+      {foundMovies}
       {' '}
 (showing max 10)
     </div>
     <ul>
-      {(props.movies).map(movie => (
+      {(movies).map(movie => (
         <li key={movie.id}>
           {movie.title}
           {' '}
@@ -23,5 +24,10 @@ found:
     </ul>
   </div>
 );
+
+SearchResults.propTypes = {
+  foundMovies: PropTypes.number.isRequired,
+  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
 
 export default SearchResults;
