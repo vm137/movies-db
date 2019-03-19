@@ -1,10 +1,8 @@
 import React from 'react';
-import './Header.scss';
+import './Logo.scss';
 
-const Header = () => (
-  <React.Fragment>
-    <p className="logo">netflixroulette</p>
-  </React.Fragment>
+const Logo = () => (
+  <p className="logo">netflixroulette</p>
 );
 
-export default Header;
+export default Logo;

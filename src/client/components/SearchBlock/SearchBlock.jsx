@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import SearchResults from '../SearchResults/SearchResults';
 import enterArrow from '../../img/enter-arrow.svg';
 import './SearchBlock.scss';
-import Header from "../Header/Header";
+import Logo from '../Logo/Logo';
 
 export default class SearchBlock extends Component {
 
@@ -41,7 +41,7 @@ export default class SearchBlock extends Component {
         return (
           <div className="search-block-wrapper">
             <div className="search-box-wrapper">
-              <Header />
+              <Logo />
               <div className="search-block">
                 <p className="find-title">find your movie</p>
 
