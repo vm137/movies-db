@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchResults from '../SearchResults/SearchResults';
+import Utils from '../Utils/Utils';
 import enterArrow from '../../img/enter-arrow.svg';
 import './SearchBlock.scss';
 import Logo from '../Logo/Logo';
 
 export default class SearchBlock extends Component {
-  static handleNoKeyPress(e) {
-    if (e.key === 'Enter') {
-      e.preventDefault();
-    }
-  }
-
   constructor(props) {
     super(props);
     this.state = {
@@ -71,7 +66,7 @@ export default class SearchBlock extends Component {
               <button
                 className={`btns-search btn-title ${titleButtonSelected ? 'btn-bg-red' : 'btn-bg-grey'}`}
                 onClick={this.changeButtonsColor.bind(this)}
-                onKeyPress={SearchBlock.handleNoKeyPress}
+                onKeyPress={Utils.preventPressEnter}
                 type="button"
               >
 title
@@ -79,7 +74,7 @@ title
               <button
                 className={`btns-search btn-genre ${!titleButtonSelected ? 'btn-bg-red' : 'btn-bg-grey'}`}
                 onClick={this.changeButtonsColor.bind(this)}
-                onKeyPress={SearchBlock.handleNoKeyPress}
+                onKeyPress={Utils.preventPressEnter}
                 type="button"
               >
 genre

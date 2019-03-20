@@ -26,11 +26,11 @@ export default class MainWindow extends Component {
           movies: myJson.data,
           foundMovies: myJson.total,
         });
-      })
-      .catch((error) => {
-        console.log('=== fetch unsuccessful.');
-        console.log(error);
       });
+    // .catch((error) => {
+    // console.log('=== fetch unsuccessful.');
+    // console.log(error);
+    // });
   }
 
   render() {
