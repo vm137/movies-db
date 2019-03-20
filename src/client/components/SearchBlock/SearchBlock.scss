@@ -1,3 +1,5 @@
+@import "../constants/constants";
+
 .search-box-wrapper {
     height: 200px;
     position: relative;
@@ -41,7 +43,7 @@
                 padding-left: 12px;
                 padding-bottom: 4px;
                 border: none;
-                border-bottom: 1px #ff594b solid;
+                border-bottom: 1px solid $NETFLIX_RED;
                 outline: none;
                 font-size: 14px;
                 box-sizing: border-box;
@@ -93,6 +95,34 @@
                 float: right;
                 background-color: #ff594b;
             }
+        }
+    }
+}
+
+.search-details {
+    position: relative;
+    height: 42px;
+    background-color: #d1d1d1;
+    color: #464646;
+    font-size: 15px;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+
+    .number-found-movies {
+        position: absolute;
+        top: 12px;
+        left: 50px;
+    }
+
+    .sort-by {
+        position: absolute;
+        left: 658px;
+        top: 12px;
+        cursor: pointer;
+        user-select: none;
+
+        .sort-release-date, .sort-rating{
+            margin-left: 12px;
+            outline: none;
         }
     }
 }

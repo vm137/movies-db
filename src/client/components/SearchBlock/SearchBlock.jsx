@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchResults from '../SearchResults/SearchResults';
+import COLOR from '../constants/constants';
 import Utils from '../Utils/Utils';
 import enterArrow from '../../img/enter-arrow.svg';
 import './SearchBlock.scss';
@@ -13,6 +14,7 @@ export default class SearchBlock extends Component {
       firstMount: true,
       titleButtonSelected: true,
       inputValue: '',
+      sortByRelease: true,
     };
   }
 
@@ -34,6 +36,13 @@ export default class SearchBlock extends Component {
     });
   }
 
+  handleSortClick() {
+    const { sortByRelease } = this.state;
+    this.setState({
+      sortByRelease: !sortByRelease,
+    });
+  }
+
   handleKeyPress(e) {
     if (e.key === 'Enter') {
       this.makeSearch();
@@ -41,8 +50,13 @@ export default class SearchBlock extends Component {
   }
 
   render() {
-    const { foundMovies, movies } = this.props;
-    const { inputValue, firstMount, titleButtonSelected } = this.state;
+    const { numberFoundMovies, movies } = this.props;
+    const {
+      inputValue, firstMount, titleButtonSelected, sortByRelease,
+    } = this.state;
+    const sortReleaseColor = sortByRelease ? COLOR.NETFLIX_RED : COLOR.NETFLIX_GREY;
+    const sortRatingColor = sortByRelease ? COLOR.NETFLIX_GREY : COLOR.NETFLIX_RED;
+
     return (
       <div className="search-block-wrapper">
         <div className="search-box-wrapper">
@@ -90,10 +104,39 @@ search
             </div>
           </div>
         </div>
+        <div className="search-details">
+          <div className="number-found-movies">
+            {numberFoundMovies}
+            {' '}
+            movies found
+          </div>
+          <div className="sort-by">
+            Sort by:
+            <span
+              role="button"
+              tabIndex={0}
+              onKeyPress={() => {}}
+              className="sort-release-date"
+              style={{ color: sortReleaseColor }}
+              onClick={this.handleSortClick.bind(this)}
+            >
+              release date
+            </span>
+            <span
+              role="button"
+              tabIndex={-1}
+              onKeyPress={() => {}}
+              className="sort-rating"
+              style={{ color: sortRatingColor }}
+              onClick={this.handleSortClick.bind(this)}
+            >
+rating
+            </span>
+          </div>
+        </div>
         {!firstMount && (
         <SearchResults
           movies={movies}
-          foundMovies={foundMovies}
         />
         )}
       </div>
@@ -102,7 +145,7 @@ search
 }
 
 SearchBlock.propTypes = {
-  foundMovies: PropTypes.number.isRequired,
+  numberFoundMovies: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   searchCB: PropTypes.PropTypes.func.isRequired,
 };
