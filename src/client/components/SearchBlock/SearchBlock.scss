@@ -117,12 +117,12 @@
         position: absolute;
         left: 658px;
         top: 12px;
-        cursor: pointer;
         user-select: none;
 
         .sort-release-date, .sort-rating{
             margin-left: 12px;
             outline: none;
+            cursor: pointer;
         }
     }
 }

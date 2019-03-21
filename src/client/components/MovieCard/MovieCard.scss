@@ -1,0 +1,48 @@
+@import '../constants/constants';
+
+.movie-card-wrapper {
+  float: left;
+  width: 270px;
+  height: 470px;
+  margin: 0 0 20px 22px;
+  background-color: #eaeaea;
+
+  .img-container {
+    width: 270px;
+    height: 405px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  .info-wrapper {
+    position: relative;
+    font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+    color: $TEXT_GREY;
+
+    .movie-title {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-weight: bold;
+    }
+
+    .movie-genres {
+      position: absolute;
+      top: 38px;
+      left: 12px;
+      font-size: 14px;
+    }
+
+    .movie-year {
+      position: absolute;
+      top: 10px;
+      right: 9px;
+      padding: 4px;
+      border: 1px solid $TEXT_GREY;
+      font-size: 14px;
+    }
+  }
+
+}

@@ -13,9 +13,13 @@ export default class SearchBlock extends Component {
     this.state = {
       firstMount: true,
       titleButtonSelected: true,
-      inputValue: '',
+      inputValue: 'yes',
       sortByRelease: true,
     };
+  }
+
+  componentDidMount() {
+    this.makeSearch();
   }
 
   changeButtonsColor() {
@@ -135,9 +139,7 @@ rating
           </div>
         </div>
         {!firstMount && (
-        <SearchResults
-          movies={movies}
-        />
+        <SearchResults movies={movies} />
         )}
       </div>
     );
