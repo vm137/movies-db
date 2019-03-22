@@ -36,11 +36,18 @@ export default class MainWindow extends Component {
     });
   }
 
+  changeToSearchView() {
+    this.setState({
+      searchBlock: true,
+    });
+  }
+
   render() {
     const {
       searchBlock, movies, numberFoundMovies = 0, movieId,
     } = this.state;
     const handleCardClick = this.changeToSingleView.bind(this);
+    const changeToSearchView = this.changeToSearchView.bind(this);
     return (
       <div>
         { searchBlock
@@ -52,7 +59,7 @@ export default class MainWindow extends Component {
               cardClickCB={handleCardClick}
             />
           )
-          : <SingleMovie movieId={movieId} movies={movies} />
+          : <SingleMovie movieId={movieId} movies={movies} changeToSearchCB={changeToSearchView} />
             }
       </div>
     );
