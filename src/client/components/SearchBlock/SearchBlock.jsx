@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import SearchResults from '../SearchResults/SearchResults';
-import COLOR from '../constants/constants';
-import Utils from '../Utils/Utils';
-import enterArrow from '../../img/enter-arrow.svg';
-import './SearchBlock.scss';
 import Logo from '../Logo/Logo';
+import Utils from '../Utils/Utils';
+import COLOR from '../constants/constants';
+import './SearchBlock.scss';
+import enterArrow from '../../img/enter-arrow.svg';
 
 export default class SearchBlock extends Component {
   constructor(props) {
@@ -13,12 +13,17 @@ export default class SearchBlock extends Component {
     this.state = {
       firstMount: true,
       titleButtonSelected: true,
-      inputValue: 'yes',
+      inputValue: 'you', // TODO: should be '' for production.
       sortByRelease: true,
     };
+    this.textInput = React.createRef();
   }
 
+
   componentDidMount() {
+    this.textInput.focus();
+
+    // TODO: delete the following line after testing.
     this.makeSearch();
   }
 
@@ -54,7 +59,7 @@ export default class SearchBlock extends Component {
   }
 
   render() {
-    const { numberFoundMovies, movies } = this.props;
+    const { numberFoundMovies, movies, cardClickCB } = this.props;
     const {
       inputValue, firstMount, titleButtonSelected, sortByRelease,
     } = this.state;
@@ -73,6 +78,7 @@ export default class SearchBlock extends Component {
                 value={inputValue}
                 onChange={evt => this.updateInputValue(evt)}
                 onKeyPress={this.handleKeyPress.bind(this)}
+                ref={(input) => { this.textInput = input; }}
                 className="search-input"
                 type="text"
               />
@@ -139,7 +145,7 @@ rating
           </div>
         </div>
         {!firstMount && (
-        <SearchResults movies={movies} />
+        <SearchResults cardClickCB={cardClickCB} movies={movies} />
         )}
       </div>
     );
@@ -150,4 +156,5 @@ SearchBlock.propTypes = {
   numberFoundMovies: PropTypes.number.isRequired,
   movies: PropTypes.arrayOf(PropTypes.object).isRequired,
   searchCB: PropTypes.PropTypes.func.isRequired,
+  cardClickCB: PropTypes.PropTypes.func.isRequired,
 };

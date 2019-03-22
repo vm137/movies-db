@@ -3,13 +3,13 @@ import SearchBlock from '../SearchBlock/SearchBlock';
 import SingleMovie from '../SingleMovie/SingleMovie';
 import './MainWindow.scss';
 
-
 export default class MainWindow extends Component {
   constructor(props) {
     super(props);
     this.makeFetch = this.makeFetch.bind(this);
     this.state = {
       searchBlock: true,
+      movieId: null,
       numberFoundMovies: 0,
       movies: [],
     };
@@ -33,19 +33,30 @@ export default class MainWindow extends Component {
     // });
   }
 
+  changeToSingleView(id) {
+    this.setState({
+      searchBlock: false,
+      movieId: id,
+    });
+  }
+
   render() {
-    const { searchBlock, numberFoundMovies, movies } = this.state;
+    const {
+      searchBlock, movies, numberFoundMovies = 0, movieId,
+    } = this.state;
+    const handleCardClick = this.changeToSingleView.bind(this);
     return (
       <div>
         { searchBlock
           ? (
             <SearchBlock
               movies={movies}
-              numberFoundMovies={numberFoundMovies || 0}
+              numberFoundMovies={numberFoundMovies}
               searchCB={this.makeFetch}
+              cardClickCB={handleCardClick}
             />
           )
-          : <SingleMovie movie="single movie 1" movies={movies} />
+          : <SingleMovie movieId={movieId} movies={movies} />
             }
       </div>
     );
