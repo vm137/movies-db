@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.scss';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import ErrorBoundary from './ErrorBoundary';
 import MainWindow from './MainWindow/MainWindow';
 
 const App = () => (
