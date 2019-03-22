@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import MovieCard from '../MovieCard/MovieCard';
-import './SearchResults.scss';
+import MovieCard from '../MovieCard';
+import './style.scss';
 
 const SearchResults = ({ movies, cardClickCB }) => (
   <div className="results-wrapper">

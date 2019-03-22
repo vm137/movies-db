@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
-import './MovieCard.scss';
+import './style.scss';
 
-class MovieCard extends React.PureComponent {
+export default class MovieCard extends PureComponent {
+  static propTypes = {
+    mv: PropTypes.objectOf(PropTypes.any).isRequired,
+    cardClickCB: PropTypes.func.isRequired,
+  };
+
   handleClick() {
     const { mv, cardClickCB } = this.props;
     cardClickCB(mv.id);
@@ -25,10 +30,3 @@ class MovieCard extends React.PureComponent {
     );
   }
 }
-
-MovieCard.propTypes = {
-  mv: PropTypes.objectOf(PropTypes.any).isRequired,
-  cardClickCB: PropTypes.func.isRequired,
-};
-
-export default MovieCard;

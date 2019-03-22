@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import SearchResults from '../SearchResults/SearchResults';
-import Logo from '../Logo/Logo';
-import Utils from '../Utils/Utils';
+import SearchResults from '../SearchResults';
+import Logo from '../Logo';
+import Utils from '../Utils/utils';
 import COLOR from '../constants/constants';
-import './SearchBlock.scss';
 import enterArrow from '../../img/enter-arrow.svg';
+import './style.scss';
 
 export default class SearchBlock extends Component {
+  static propTypes = {
+    numberFoundMovies: PropTypes.number.isRequired,
+    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
+    searchCB: PropTypes.PropTypes.func.isRequired,
+    cardClickCB: PropTypes.PropTypes.func.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -23,7 +30,7 @@ export default class SearchBlock extends Component {
   componentDidMount() {
     this.textInput.focus();
 
-    // TODO: delete the following line after testing.
+    // TODO: delete after testing.
     this.makeSearch();
   }
 
@@ -151,10 +158,3 @@ rating
     );
   }
 }
-
-SearchBlock.propTypes = {
-  numberFoundMovies: PropTypes.number.isRequired,
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  searchCB: PropTypes.PropTypes.func.isRequired,
-  cardClickCB: PropTypes.PropTypes.func.isRequired,
-};

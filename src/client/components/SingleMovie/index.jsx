@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import './SingleMovie.scss';
 import PropTypes from 'prop-types';
+import './style.scss';
 
 export default class SingleMovie extends Component {
+  static propTypes = {
+    movieId: PropTypes.number.isRequired,
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -46,7 +50,3 @@ budget:
     );
   }
 }
-
-SingleMovie.propTypes = {
-  movieId: PropTypes.number.isRequired,
-};

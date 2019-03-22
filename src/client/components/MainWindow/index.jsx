@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import SearchBlock from '../SearchBlock/SearchBlock';
-import SingleMovie from '../SingleMovie/SingleMovie';
-import './MainWindow.scss';
+import SearchBlock from '../SearchBlock';
+import SingleMovie from '../SingleMovie';
+import './style.scss';
 
 export default class MainWindow extends Component {
   constructor(props) {
@@ -27,10 +27,6 @@ export default class MainWindow extends Component {
           numberFoundMovies: myJson.total,
         });
       });
-    // .catch((error) => {
-    // console.log('=== fetch unsuccessful.');
-    // console.log(error);
-    // });
   }
 
   changeToSingleView(id) {

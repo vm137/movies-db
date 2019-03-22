@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.scss';
 import ErrorBoundary from './ErrorBoundary';
-import MainWindow from './MainWindow/MainWindow';
+import MainWindow from './MainWindow';
 
 const App = () => (
   <div className="wrapper">

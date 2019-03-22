@@ -1,5 +1,5 @@
 import React from 'react';
-import './Logo.scss';
+import './style.scss';
 
 const Logo = () => (
   <p className="logo">netflixroulette</p>
