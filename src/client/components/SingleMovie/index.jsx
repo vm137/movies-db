@@ -6,7 +6,7 @@ import './style.scss';
 export default class SingleMovie extends PureComponent {
   static propTypes = {
     movieId: PropTypes.number.isRequired,
-    changeToSearchCB: PropTypes.func.isRequired,
+    handleClickToSearch: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -30,8 +30,8 @@ export default class SingleMovie extends PureComponent {
   }
 
   handleSearchButton() {
-    const { changeToSearchCB } = this.props;
-    changeToSearchCB.call();
+    const { handleClickToSearch } = this.props;
+    handleClickToSearch.call();
   }
 
   render() {

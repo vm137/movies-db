@@ -6,13 +6,15 @@ import './style.scss';
 export default class MainWindow extends Component {
   constructor(props) {
     super(props);
-    this.makeFetch = this.makeFetch.bind(this);
     this.state = {
       searchBlock: true,
       movieId: null,
       numberFoundMovies: 0,
       movies: [],
     };
+    this.makeFetch = this.makeFetch.bind(this);
+    this.changeToSearchView = this.changeToSearchView.bind(this);
+    this.handleCardClick = this.changeToSingleView.bind(this);
   }
 
   makeFetch(searchString = '', searchBy = '', offset = '', limit = '') {
@@ -46,8 +48,7 @@ export default class MainWindow extends Component {
     const {
       searchBlock, movies, numberFoundMovies = 0, movieId,
     } = this.state;
-    const handleCardClick = this.changeToSingleView.bind(this);
-    const changeToSearchView = this.changeToSearchView.bind(this);
+
     return (
       <div>
         { searchBlock
@@ -56,11 +57,18 @@ export default class MainWindow extends Component {
               movies={movies}
               numberFoundMovies={numberFoundMovies}
               searchCB={this.makeFetch}
-              cardClickCB={handleCardClick}
+              handleCardClick={this.handleCardClick}
             />
           )
-          : <SingleMovie movieId={movieId} movies={movies} changeToSearchCB={changeToSearchView} />
+          : (
+            <SingleMovie
+              movieId={movieId}
+              movies={movies}
+              handleClickToSearch={this.changeToSearchView}
+            />
+          )
             }
+
       </div>
     );
   }

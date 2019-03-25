@@ -5,12 +5,12 @@ import './style.scss';
 export default class MovieCard extends PureComponent {
   static propTypes = {
     mv: PropTypes.objectOf(PropTypes.any).isRequired,
-    cardClickCB: PropTypes.func.isRequired,
+    handleCardClick: PropTypes.func.isRequired,
   };
 
   handleClick() {
-    const { mv, cardClickCB } = this.props;
-    cardClickCB(mv.id);
+    const { mv, handleCardClick } = this.props;
+    handleCardClick(mv.id);
   }
 
   render() {
