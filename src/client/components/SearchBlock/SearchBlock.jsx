@@ -24,6 +24,10 @@ export default class SearchBlock extends Component {
       sortByRelease: true,
     };
     this.textInput = React.createRef();
+    this.onKeyPress = this.handleKeyPress.bind(this);
+    this.handleSearchClick = this.makeSearch.bind(this);
+    this.handleSearchByClickBound = this.changeButtonsColor.bind(this);
+    this.handleSortClickBound = this.handleSortClick.bind(this);
   }
 
 
@@ -84,7 +88,7 @@ export default class SearchBlock extends Component {
               <input
                 value={inputValue}
                 onChange={evt => this.updateInputValue(evt)}
-                onKeyPress={this.handleKeyPress.bind(this)}
+                onKeyPress={this.onKeyPress}
                 ref={(input) => { this.textInput = input; }}
                 className="search-input"
                 type="text"
@@ -96,7 +100,7 @@ export default class SearchBlock extends Component {
               <span className="search-by">search by</span>
               <button
                 className={`btns-search btn-title ${titleButtonSelected ? 'btn-bg-red' : 'btn-bg-grey'}`}
-                onClick={this.changeButtonsColor.bind(this)}
+                onClick={this.handleSearchByClickBound}
                 onKeyPress={Utils.preventPressEnter}
                 type="button"
               >
@@ -104,7 +108,7 @@ title
               </button>
               <button
                 className={`btns-search btn-genre ${!titleButtonSelected ? 'btn-bg-red' : 'btn-bg-grey'}`}
-                onClick={this.changeButtonsColor.bind(this)}
+                onClick={this.handleSearchByClickBound}
                 onKeyPress={Utils.preventPressEnter}
                 type="button"
               >
@@ -112,7 +116,7 @@ genre
               </button>
 
               <button
-                onClick={this.makeSearch.bind(this)}
+                onClick={this.handleSearchClick}
                 className="btns-search btn-search"
                 type="submit"
               >
@@ -135,7 +139,7 @@ search
               onKeyPress={() => {}}
               className="sort-release-date"
               style={{ color: sortReleaseColor }}
-              onClick={this.handleSortClick.bind(this)}
+              onClick={this.handleSortClickBound}
             >
               release date
             </span>
@@ -145,7 +149,7 @@ search
               onKeyPress={() => {}}
               className="sort-rating"
               style={{ color: sortRatingColor }}
-              onClick={this.handleSortClick.bind(this)}
+              onClick={this.handleSortClickBound}
             >
 rating
             </span>
