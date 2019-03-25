@@ -13,8 +13,8 @@ export default class MainWindow extends Component {
       movies: [],
     };
     this.makeFetch = this.makeFetch.bind(this);
-    this.changeToSearchView = this.changeToSearchView.bind(this);
     this.handleCardClick = this.changeToSingleView.bind(this);
+    this.handleSearchClick = this.changeToSearchView.bind(this);
   }
 
   makeFetch(searchString = '', searchBy = '', offset = '', limit = '') {
@@ -57,18 +57,17 @@ export default class MainWindow extends Component {
               movies={movies}
               numberFoundMovies={numberFoundMovies}
               searchCB={this.makeFetch}
-              handleCardClick={this.handleCardClick}
+              handleClick={this.handleCardClick}
             />
           )
           : (
             <SingleMovie
               movieId={movieId}
               movies={movies}
-              handleClickToSearch={this.changeToSearchView}
+              handleClickToSearch={this.handleSearchClick}
             />
           )
             }
-
       </div>
     );
   }

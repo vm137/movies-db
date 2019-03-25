@@ -5,19 +5,24 @@ import './style.scss';
 export default class MovieCard extends PureComponent {
   static propTypes = {
     mv: PropTypes.objectOf(PropTypes.any).isRequired,
-    handleCardClick: PropTypes.func.isRequired,
+    onClick: PropTypes.func.isRequired,
   };
 
+  constructor(props) {
+    super(props);
+    this.handleClickBound = this.handleClick.bind(this);
+  }
+
   handleClick() {
-    const { mv, handleCardClick } = this.props;
-    handleCardClick(mv.id);
+    const { mv, onClick } = this.props;
+    onClick(mv.id);
   }
 
   render() {
     const { mv } = this.props;
 
     return (
-      <div onClick={this.handleClick.bind(this)} role="button" tabIndex={0} onKeyPress={() => {}} className="movie-card-wrapper">
+      <div onClick={this.handleClickBound} role="button" tabIndex={0} onKeyPress={() => {}} className="movie-card-wrapper">
         <div className="img-container">
           <img src={mv.poster_path} alt={mv.title} />
         </div>

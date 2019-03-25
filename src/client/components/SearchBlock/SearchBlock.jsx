@@ -12,7 +12,7 @@ export default class SearchBlock extends Component {
     numberFoundMovies: PropTypes.number.isRequired,
     movies: PropTypes.arrayOf(PropTypes.object).isRequired,
     searchCB: PropTypes.PropTypes.func.isRequired,
-    handleCardClick: PropTypes.PropTypes.func.isRequired,
+    handleClick: PropTypes.PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -66,7 +66,7 @@ export default class SearchBlock extends Component {
   }
 
   render() {
-    const { numberFoundMovies, movies, handleCardClick } = this.props;
+    const { numberFoundMovies, movies, handleClick } = this.props;
     const {
       inputValue, firstMount, titleButtonSelected, sortByRelease,
     } = this.state;
@@ -152,7 +152,7 @@ rating
           </div>
         </div>
         {!firstMount && (
-        <SearchResults handleCardClick={handleCardClick} movies={movies} />
+        <SearchResults handleClick={handleClick} movies={movies} />
         )}
       </div>
     );

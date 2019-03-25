@@ -3,8 +3,5 @@
     "browser": true
   },
   "extends": "airbnb",
-  "parser": "babel-eslint",
-  "rules": {
-    "react/jsx-no-bind": "off"
-  }
+  "parser": "babel-eslint"
 }
