@@ -6,7 +6,7 @@ import './style.scss';
 export default class SingleMovie extends PureComponent {
   static propTypes = {
     movieId: PropTypes.number.isRequired,
-    handleClickToSearch: PropTypes.func.isRequired,
+    handleSearchClick: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -14,7 +14,7 @@ export default class SingleMovie extends PureComponent {
     this.state = {
       movie: {},
     };
-    this.onClick = this.handleSearchButton.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   componentDidMount() {
@@ -30,9 +30,9 @@ export default class SingleMovie extends PureComponent {
       });
   }
 
-  handleSearchButton() {
-    const { handleClickToSearch } = this.props;
-    handleClickToSearch.call();
+  handleSearchClick() {
+    const { handleSearchClick } = this.props;
+    handleSearchClick.call();
   }
 
   render() {
@@ -42,7 +42,7 @@ export default class SingleMovie extends PureComponent {
       <div className="single-movie-wrapper">
         <Logo />
         <img src={movie.poster_path} alt={movie.title} />
-        <button className="btn-search" type="button" onClick={this.onClick}>search</button>
+        <button className="btn-search" type="button" onClick={this.handleSearchClick}>search</button>
 
         <div className="movie-details">
           <h2 className="title">{movie.title}</h2>

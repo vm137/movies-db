@@ -10,7 +10,7 @@ export default class MovieCard extends PureComponent {
 
   constructor(props) {
     super(props);
-    this.handleClickBound = this.handleClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
@@ -22,7 +22,7 @@ export default class MovieCard extends PureComponent {
     const { mv } = this.props;
 
     return (
-      <div onClick={this.handleClickBound} role="button" tabIndex={0} onKeyPress={() => {}} className="movie-card-wrapper">
+      <div onClick={this.handleClick} role="button" tabIndex={0} onKeyPress={() => {}} className="movie-card-wrapper">
         <div className="img-container">
           <img src={mv.poster_path} alt={mv.title} />
         </div>
