@@ -1,9 +1,35 @@
-body, p {
-  margin: 0;
+@import 'constants/constants';
+
+html, body {
+    height: 100%;
+}
+
+html, body, p {
+    margin: 0;
 }
 
 .wrapper {
-  position: relative;
-  width: 900px;
-  margin: 0 auto;
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+}
+
+#app {
+    min-height: 100%;
+    margin-bottom: -50px;
+}
+
+.footer, .push {
+    height: 50px;
+}
+
+.footer {
+    position: relative;
+    width: 900px;
+    margin: 0 auto;
+    background-color: $BACKGROUND_BLUE;
+
+    .logo-bottom {
+
+    }
 }
