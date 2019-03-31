@@ -50,7 +50,7 @@ export default class MainWindow extends Component {
     } = this.state;
 
     return (
-      <div>
+      <div className="mainWindow">
         { searchBlock
           ? (
             <SearchBlock
