@@ -1,4 +1,4 @@
-import { shallow, render } from 'enzyme';
+import { render } from 'enzyme';
 import React from 'react';
 import SingleMovie from './SingleMovie';
 
