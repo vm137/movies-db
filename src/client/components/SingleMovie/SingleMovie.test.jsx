@@ -15,7 +15,7 @@ describe('SingleMovie', () => {
   });
 
   // it('mount two', () => {
-  //   const wrapper = shallow(<SingleMovie
+  //   const wrapper = mount(<SingleMovie
   //     movieId={movieId}
   //     onClick={onClick}
   //   />);
