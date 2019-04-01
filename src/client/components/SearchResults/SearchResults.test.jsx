@@ -2,8 +2,42 @@ import { render } from 'enzyme/build';
 import React from 'react';
 import SearchResults from './SearchResults';
 
-const movies = [];
 const onClick = jest.fn();
+const movies = [
+  {
+    id: 511679,
+    title: 'Héctor El Father: Conocerás la verdad',
+    tagline: '',
+    vote_average: 8.8,
+    vote_count: 5,
+    release_date: '2018-03-22',
+    poster_path: 'https://image.tmdb.org/t/p/w500/jwJoURyfm4XxtnYRtIOS2pYR9Np.jpg',
+    overview: '',
+    budget: 0,
+    revenue: 0,
+    genres: [
+      'Drama',
+    ],
+    runtime: 90,
+  },
+  {
+    id: 238,
+    title: 'The Godfather',
+    tagline: "An offer you can't refuse.",
+    vote_average: 8.5,
+    vote_count: 7437,
+    release_date: '1972-03-14',
+    poster_path: 'https://image.tmdb.org/t/p/w500/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg',
+    overview: 'Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.',
+    budget: 6000000,
+    revenue: 245066411,
+    genres: [
+      'Drama',
+      'Crime',
+    ],
+    runtime: 175,
+  },
+];
 
 describe('<SearchResults />', () => {
   it('renders matching snapshot', () => {
@@ -12,5 +46,13 @@ describe('<SearchResults />', () => {
       onClick={onClick}
     />);
     expect(wrapper).toMatchSnapshot();
+  });
+
+  it('renders matching snapshot', () => {
+    const wrapper = render(<SearchResults
+      movies={movies}
+      onClick={onClick}
+    />);
+    expect(wrapper.find('.movie-card-wrapper').length).toBe(2);
   });
 });
