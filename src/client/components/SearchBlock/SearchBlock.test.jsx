@@ -1,4 +1,4 @@
-import { shallow, mount, render } from 'enzyme';
+import { mount, render } from 'enzyme';
 import React from 'react';
 import SearchBlock from './SearchBlock';
 
