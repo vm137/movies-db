@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import SearchBlock from '../SearchBlock';
 import SingleMovie from '../SingleMovie';
 import './style.scss';
 
-export default class MainWindow extends Component {
+class MainWindow extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,30 +46,32 @@ export default class MainWindow extends Component {
   }
 
   render() {
-    const {
-      searchBlock, movies, numberFoundMovies = 0, movieId,
-    } = this.state;
+    const { movies, numberFoundMovies = 0, movieId } = this.state;
 
     return (
       <div className="mainWindow">
-        { searchBlock
-          ? (
-            <SearchBlock
-              movies={movies}
-              numberFoundMovies={numberFoundMovies}
-              searchCB={this.makeFetch}
-              onClick={this.handleToSingleView}
-            />
-          )
-          : (
-            <SingleMovie
-              movieId={movieId}
-              movies={movies}
-              onClick={this.handleToSearchView}
-            />
-          )
-            }
+        {this.props.showPage === 'searchBlock' && (
+        <SearchBlock
+          movies={movies}
+          numberFoundMovies={numberFoundMovies}
+          searchCB={this.makeFetch}
+          onClick={this.handleToSingleView}
+        />
+        )}
+        {this.props.showPage === 'singleMovie' && (
+        <SingleMovie
+          movieId={movieId}
+          movies={movies}
+          onClick={this.handleToSearchView}
+        />
+        )}
       </div>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  showPage: state.showPage,
+});
+
+export default connect(mapStateToProps)(MainWindow);

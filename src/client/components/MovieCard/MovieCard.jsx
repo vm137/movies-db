@@ -1,8 +1,10 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './style.scss';
+import { showSingleMovie } from '../../actions/actions';
 
-export default class MovieCard extends PureComponent {
+class MovieCard extends PureComponent {
   static propTypes = {
     mv: PropTypes.objectOf(PropTypes.any).isRequired,
     onClick: PropTypes.func.isRequired,
@@ -16,6 +18,7 @@ export default class MovieCard extends PureComponent {
   handleClick() {
     const { mv, onClick } = this.props;
     onClick(mv.id);
+    this.props.showSingleMovie();
   }
 
   render() {
@@ -35,3 +38,9 @@ export default class MovieCard extends PureComponent {
     );
   }
 }
+
+const mapDispatchProps = dispatch => ({
+  showSingleMovie: () => dispatch(showSingleMovie),
+});
+
+export default connect(null, mapDispatchProps)(MovieCard);

@@ -1,9 +1,11 @@
 import React, { PureComponent } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Logo from '../Logo';
 import './style.scss';
+import { showSearchBlock } from '../../actions/actions';
 
-export default class SingleMovie extends PureComponent {
+class SingleMovie extends PureComponent {
   static propTypes = {
     movieId: PropTypes.number.isRequired,
     onClick: PropTypes.func.isRequired,
@@ -32,7 +34,8 @@ export default class SingleMovie extends PureComponent {
 
   handleClick() {
     const { onClick } = this.props;
-    onClick.call();
+    onClick();
+    this.props.showSearchBlock();
   }
 
   render() {
@@ -57,8 +60,13 @@ export default class SingleMovie extends PureComponent {
           <p className="overview">{movie.overview}</p>
         </div>
 
-        {/* <SearchResults movies={this.props.movies} /> */}
       </div>
     );
   }
 }
+
+const mapDispatchProps = dispatch => ({
+  showSearchBlock: () => dispatch(showSearchBlock),
+});
+
+export default connect(null, mapDispatchProps)(SingleMovie);
