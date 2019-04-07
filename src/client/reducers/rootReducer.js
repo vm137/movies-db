@@ -6,6 +6,7 @@ export default (state, action) => {
       return { ...state, showPage: 'searchBlock' };
 
     case ACTIONS.SHOW_SINGLE_MOVIE:
+
       return { ...state, showPage: 'singleMovie' };
 
     default:

@@ -15,7 +15,6 @@ class MainWindow extends Component {
     };
     this.makeFetch = this.makeFetch.bind(this);
     this.handleToSingleView = this.handleToSingleView.bind(this);
-    this.handleToSearchView = this.handleToSearchView.bind(this);
   }
 
   makeFetch(searchString = '', searchBy = '', offset = '', limit = '') {
@@ -39,12 +38,6 @@ class MainWindow extends Component {
     });
   }
 
-  handleToSearchView() {
-    this.setState({
-      searchBlock: true,
-    });
-  }
-
   render() {
     const { movies, numberFoundMovies = 0, movieId } = this.state;
 
@@ -62,7 +55,6 @@ class MainWindow extends Component {
         <SingleMovie
           movieId={movieId}
           movies={movies}
-          onClick={this.handleToSearchView}
         />
         )}
       </div>
