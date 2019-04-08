@@ -1,19 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import MovieCard from '../MovieCard';
 import './style.scss';
 
-const SearchResults = ({ movies, onClick }) => (
+const SearchResults = ({ moviesR }) => (
   <div className="results-wrapper">
-    {(movies).map(movie => (
-      <MovieCard mv={movie} onClick={onClick} key={movie.id} />
+    {(moviesR).map(movie => (
+      <MovieCard mv={movie} key={movie.id} />
     ))}
   </div>
 );
 
 SearchResults.propTypes = {
-  movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-  onClick: PropTypes.func.isRequired,
+  moviesR: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
-export default SearchResults;
+const mapStateToProps = state => ({
+  moviesR: state.movies,
+});
+
+export default connect(mapStateToProps)(SearchResults);

@@ -2,13 +2,12 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import './style.scss';
-import { showSingleMovieAction } from '../../actions/actions';
+import { fetchSingleMovieAction } from '../../actions/actions';
 
 class MovieCard extends PureComponent {
   static propTypes = {
     mv: PropTypes.objectOf(PropTypes.any).isRequired,
-    onClick: PropTypes.func.isRequired,
-    showSingleMovie: PropTypes.func.isRequired,
+    fetchSingleMovie: PropTypes.func.isRequired,
   };
 
   constructor(props) {
@@ -17,9 +16,8 @@ class MovieCard extends PureComponent {
   }
 
   handleClick() {
-    const { showSingleMovie, mv, onClick } = this.props;
-    onClick(mv.id);
-    showSingleMovie();
+    const { fetchSingleMovie, mv } = this.props;
+    fetchSingleMovie(mv.id);
   }
 
   render() {
@@ -41,7 +39,7 @@ class MovieCard extends PureComponent {
 }
 
 const mapDispatchProps = dispatch => ({
-  showSingleMovie: () => dispatch(showSingleMovieAction),
+  fetchSingleMovie: id => dispatch(fetchSingleMovieAction(id)),
 });
 
 export default connect(null, mapDispatchProps)(MovieCard);

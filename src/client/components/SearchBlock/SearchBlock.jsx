@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { fetchMoviesAction } from '../../actions/actions';
 import SearchResults from '../SearchResults';
 import Logo from '../Logo';
 import Utils from '../Utils/Utils';
@@ -10,25 +11,22 @@ import './style.scss';
 
 class SearchBlock extends Component {
   static propTypes = {
-    numberFoundMovies: PropTypes.number.isRequired,
-    movies: PropTypes.arrayOf(PropTypes.object).isRequired,
-    searchCB: PropTypes.PropTypes.func.isRequired,
-    onClick: PropTypes.PropTypes.func.isRequired,
+    moviesTotalR: PropTypes.number.isRequired,
+    fetchMovies: PropTypes.func.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
-      firstMount: true,
-      titleButtonSelected: true,
       inputValue: '', // TODO: add 'some' for testing.
+      titleButtonSelected: true,
       sortByRelease: true,
     };
     this.textInput = React.createRef();
     this.onKeyPress = this.handleKeyPress.bind(this);
-    this.makeSearch = this.makeSearch.bind(this);
     this.swapSearchByButtonsColor = this.swapSearchByButtonsColor.bind(this);
     this.handleSortByClick = this.handleSortByClick.bind(this);
+    this.makeSearch = this.makeSearch.bind(this);
   }
 
   componentDidMount() {
@@ -40,16 +38,15 @@ class SearchBlock extends Component {
   }
 
   makeSearch() {
-    this.setState({ firstMount: false });
     const { titleButtonSelected, inputValue } = this.state;
-    const { searchCB } = this.props;
     const searchBy = titleButtonSelected ? 'title' : 'genres';
-    searchCB(inputValue, searchBy);
+    const { fetchMovies } = this.props;
+    fetchMovies(inputValue, searchBy);
   }
 
   updateInputValue(evt) {
     this.setState({
-      inputValue: evt.target.value,
+      inputValue: evt.target.value, // TODO: make search hints
     });
   }
 
@@ -67,9 +64,9 @@ class SearchBlock extends Component {
   }
 
   render() {
-    const { numberFoundMovies, movies, onClick } = this.props;
+    const { moviesTotalR } = this.props;
     const {
-      inputValue, firstMount, titleButtonSelected, sortByRelease,
+      inputValue, titleButtonSelected, sortByRelease,
     } = this.state;
     const sortReleaseColor = sortByRelease ? COLOR.NETFLIX_RED : COLOR.NETFLIX_GREY;
     const sortRatingColor = sortByRelease ? COLOR.NETFLIX_GREY : COLOR.NETFLIX_RED;
@@ -124,7 +121,7 @@ search
         </div>
         <div className="search-details">
           <div className="number-found-movies">
-            {numberFoundMovies}
+            {moviesTotalR}
             {' '}
             movies found
           </div>
@@ -152,16 +149,18 @@ rating
             </span>
           </div>
         </div>
-        {!firstMount && (
-        <SearchResults onClick={onClick} movies={movies} />
-        )}
+        <SearchResults />
       </div>
     );
   }
 }
 
 const mapStateToProps = state => ({
-  moviesR: state.movies,
+  moviesTotalR: state.total,
 });
 
-export default connect(mapStateToProps)(SearchBlock);
+const mapDispatchProps = dispatch => ({
+  fetchMovies: (searchString, searchBy) => dispatch(fetchMoviesAction(searchString, searchBy)),
+});
+
+export default connect(mapStateToProps, mapDispatchProps)(SearchBlock);

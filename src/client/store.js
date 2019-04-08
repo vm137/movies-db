@@ -6,6 +6,7 @@ const initialState = {
   showPage: 'searchBlock',
   movies: [],
   movie: {},
+  total: 0,
 };
 
 /* eslint-disable no-underscore-dangle */
