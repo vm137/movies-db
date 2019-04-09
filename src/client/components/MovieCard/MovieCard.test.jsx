@@ -1,4 +1,4 @@
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import testData from './__testdata__/testMovie.json';
 import MovieCard from './MovieCard';
