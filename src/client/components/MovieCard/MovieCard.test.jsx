@@ -1,6 +1,6 @@
 import { shallow } from 'enzyme';
 import React from 'react';
-import testData from './__testdata__/testMovie.json';
+import testData from './__fixtures__/testMovie.json';
 import MovieCard from './MovieCard';
 
 describe('<MovieCard />', () => {
