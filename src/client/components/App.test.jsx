@@ -12,9 +12,4 @@ describe('<App />', () => {
     const wrapper = shallow(<App />);
     expect(wrapper.find('.wrapper').length).toBe(1);
   });
-
-  it('renders matching wrapper', () => {
-    const wrapper = shallow(<App />);
-    expect(wrapper.find('.push').length).toBe(1);
-  });
 });
