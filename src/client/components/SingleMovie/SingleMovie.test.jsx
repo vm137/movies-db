@@ -1,4 +1,4 @@
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import SingleMovie from './SingleMovie';
 
@@ -7,35 +7,32 @@ const onClick = () => {};
 
 describe('<SingleMovie />', () => {
   it('renders matching snapshot', () => {
-    const wrapper = render(<SingleMovie
+    const wrapper = shallow(<SingleMovie
       movieId={movieId}
       onClick={onClick}
     />);
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('fetch()', () => {
-    global.fetch = jest.fn();
-    const mockSuccessResponse = { movie: {} };
-    const mockJsonPromise = Promise.resolve(mockSuccessResponse);
-    const mockFetchPromise = Promise.resolve({
-      json: () => mockJsonPromise,
-    });
-    jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
-
+  it('test fetch(url)', (done) => {
+    const onClickJest = jest.fn();
     const wrapper = shallow(<SingleMovie
       movieId={movieId}
-      onClick={onClick}
+      onClick={onClickJest}
     />);
 
-    expect(global.fetch).toHaveBeenCalledTimes(1);
+    const button = wrapper.find('.btn-search');
+    expect(button.length).toBe(1);
+    button.simulate('click');
+    expect(onClickJest.mock.calls.length).toEqual(1);
+
     expect(global.fetch).toHaveBeenCalledWith('http://react-cdp-api.herokuapp.com/movies/336');
 
-    process.nextTick(() => { // 6
+    process.nextTick(() => {
       expect(wrapper.find('.single-movie-wrapper').length).toBe(1);
 
-      global.fetch.mockClear(); // 7
-      // done(); // 8
+      global.fetch.mockClear();
+      done();
     });
   });
 });
