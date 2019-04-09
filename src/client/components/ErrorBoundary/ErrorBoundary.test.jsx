@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow, render, mount } from 'enzyme/build';
+import { shallow, mount } from 'enzyme/build';
 import ErrorBoundary from './ErrorBoundary';
 
 const ChildComponent = () => null;
@@ -16,7 +16,7 @@ describe('<ErrorBoundary />', () => {
   });
 
   it('renders child component', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <ErrorBoundary>
         <ChildComponent />
       </ErrorBoundary>,
