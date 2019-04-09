@@ -1,0 +1,38 @@
+import { shallow } from 'enzyme';
+import React from 'react';
+import SingleMovie from './SingleMovie';
+
+const movieId = 336;
+const onClick = () => {};
+
+describe('<SingleMovie />', () => {
+  it('renders matching snapshot', () => {
+    const wrapper = shallow(<SingleMovie
+      movieId={movieId}
+      onClick={onClick}
+    />);
+    expect(wrapper).toMatchSnapshot();
+  });
+
+  it('test fetch(url)', (done) => {
+    const onClickJest = jest.fn();
+    const wrapper = shallow(<SingleMovie
+      movieId={movieId}
+      onClick={onClickJest}
+    />);
+
+    const button = wrapper.find('.btn-search');
+    expect(button.length).toBe(1);
+    button.simulate('click');
+    expect(onClickJest.mock.calls.length).toEqual(1);
+
+    expect(global.fetch).toHaveBeenCalledWith('http://react-cdp-api.herokuapp.com/movies/336');
+
+    process.nextTick(() => {
+      expect(wrapper.find('.single-movie-wrapper').length).toBe(1);
+
+      global.fetch.mockClear();
+      done();
+    });
+  });
+});

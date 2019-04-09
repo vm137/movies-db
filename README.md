@@ -2,12 +2,12 @@
 
 http://react-cdp-api.herokuapp.com/api-docs
 
-## Task3 (Components lecture)
+# Task4 (Testing lecture)
 
-Write components implementing HTML markup for required design (see images at the beginning of the document)
+Coverage > 60% Write tests using enzyme and jest
 
-Use ErrorBoundary component for catching and displaying errors ( https://reactjs.org/docs/error-boundaries.html ). You could create one component and wrap all your application, or use several components.
+Use snapshot testing
 
-Use smart/dumb components approach
+Use coverage tool
 
-100% decomposition (estimated by mentor)
+Write at least one e2e test using library from the list: Cypress, CasperJS, Protractor, Nightwatch, Webdriver

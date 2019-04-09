@@ -1,0 +1,14 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MainWindow /> renders matching snapshot 1`] = `
+<div
+  className="mainWindow"
+>
+  <SearchBlock
+    movies={Array []}
+    numberFoundMovies={0}
+    onClick={[Function]}
+    searchCB={[Function]}
+  />
+</div>
+`;

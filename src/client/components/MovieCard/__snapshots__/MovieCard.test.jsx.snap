@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MovieCard /> renders matching snapshot 1`] = `
+<div
+  className="movie-card-wrapper"
+  onClick={[Function]}
+  onKeyPress={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className="img-container"
+  >
+    <img
+      alt="Duck, You Sucker"
+      src="https://image.tmdb.org/t/p/w500/nQkr1yi87pX1d3lQVTrBEWlCpT1.jpg"
+    />
+  </div>
+  <div
+    className="info-wrapper"
+  >
+    <p
+      className="movie-title"
+    >
+      Duck, You Sucker
+    </p>
+    <p
+      className="movie-genres"
+    >
+      Western
+    </p>
+    <p
+      className="movie-year"
+    >
+      1971
+    </p>
+  </div>
+</div>
+`;

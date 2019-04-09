@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SearchResults from '../SearchResults';
 import Logo from '../Logo';
 import Utils from '../Utils/Utils';
-import COLOR from '../constants/constants';
+import COLOR from '../../constants/constants';
 import enterArrow from '../../img/enter-arrow.svg';
 import './style.scss';
 
@@ -20,7 +20,7 @@ export default class SearchBlock extends Component {
     this.state = {
       firstMount: true,
       titleButtonSelected: true,
-      inputValue: 'you', // TODO: make '' after testing.
+      inputValue: '', // TODO: make '' after testing.
       sortByRelease: true,
     };
     this.textInput = React.createRef();
@@ -30,12 +30,8 @@ export default class SearchBlock extends Component {
     this.handleSortByClick = this.handleSortByClick.bind(this);
   }
 
-
   componentDidMount() {
     this.textInput.focus();
-
-    // TODO: delete after testing.
-    this.makeSearch();
   }
 
   swapSearchByButtonsColor() {

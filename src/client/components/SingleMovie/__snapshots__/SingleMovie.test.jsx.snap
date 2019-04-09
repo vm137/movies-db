@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SingleMovie /> renders matching snapshot 1`] = `
+<div
+  className="single-movie-wrapper"
+>
+  <Logo />
+  <img />
+  <button
+    className="btn-search"
+    onClick={[Function]}
+    type="button"
+  >
+    search
+  </button>
+  <div
+    className="movie-details"
+  >
+    <h2
+      className="title"
+    />
+    <p
+      className="tagline"
+    />
+    <div
+      className="release-wrapper"
+    >
+      <p
+        className="release-date"
+      />
+      <p
+        className="runtime"
+      >
+         min
+      </p>
+    </div>
+    <p
+      className="overview"
+    />
+  </div>
+</div>
+`;
