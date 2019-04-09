@@ -7,7 +7,7 @@ const numberFoundMovies = 10;
 const searchCB = () => {};
 const onClick = () => {};
 
-describe('SearchBlock', () => {
+describe('<SearchBlock />', () => {
   it('renders matching snapshot', () => {
     const wrapper = render(<SearchBlock
       movies={movies}
@@ -18,7 +18,7 @@ describe('SearchBlock', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('mount two', () => {
+  it('check for .search-block-wrapper', () => {
     const wrapper = mount(<SearchBlock
       movies={movies}
       numberFoundMovies={numberFoundMovies}

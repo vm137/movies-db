@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`SearchBlock renders matching snapshot 1`] = `
+exports[`<SearchBlock /> renders matching snapshot 1`] = `
 initialize {
   "0": Object {
     "attribs": Object {
