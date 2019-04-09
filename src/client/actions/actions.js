@@ -11,12 +11,10 @@ export function fetchMoviesAction(searchString, searchBy = '', offset = '', limi
   let callString = 'http://react-cdp-api.herokuapp.com/movies';
   callString += `?search=${searchString}&searchBy=${searchBy}&offset=${offset}&limit=${limit}`;
 
-  return function (dispatch) {
-    return axios.get(callString)
-      .then(({ data }) => {
-        dispatch(showSearchBlockAction(data));
-      });
-  };
+  return dispatch => axios.get(callString)
+    .then(({ data }) => {
+      dispatch(showSearchBlockAction(data));
+    });
 }
 
 export const showSingleMovieAction = data => ({
@@ -25,10 +23,8 @@ export const showSingleMovieAction = data => ({
 });
 
 export function fetchSingleMovieAction(movieId) {
-  return function (dispatch) {
-    return axios.get(`http://react-cdp-api.herokuapp.com/movies/${movieId}`)
-      .then(({ data }) => {
-        dispatch(showSingleMovieAction(data));
-      });
-  };
+  return dispatch => axios.get(`http://react-cdp-api.herokuapp.com/movies/${movieId}`)
+    .then(({ data }) => {
+      dispatch(showSingleMovieAction(data));
+    });
 }

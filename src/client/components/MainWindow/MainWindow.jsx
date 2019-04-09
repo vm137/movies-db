@@ -10,7 +10,7 @@ const MainWindow = ({ showPage }) => (
     {showPage === 'searchBlock' && <SearchBlock />}
     {showPage === 'singleMovie' && <SingleMovie />}
   </div>
-);
+); // TODO: add 'no movies found.'
 
 MainWindow.propTypes = {
   showPage: PropTypes.string.isRequired,
