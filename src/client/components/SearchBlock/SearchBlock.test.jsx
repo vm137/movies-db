@@ -1,4 +1,4 @@
-import { mount, render } from 'enzyme';
+import { mount } from 'enzyme';
 import React from 'react';
 import SearchBlock from './SearchBlock';
 
@@ -9,7 +9,7 @@ const onClick = () => {};
 
 describe('<SearchBlock />', () => {
   it('renders matching snapshot', () => {
-    const wrapper = render(<SearchBlock
+    const wrapper = mount(<SearchBlock
       movies={movies}
       numberFoundMovies={numberFoundMovies}
       searchCB={searchCB}

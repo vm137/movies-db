@@ -1,3 +1,53 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SearchResults /> renders matching snapshot 1`] = `ShallowWrapper {}`;
+exports[`<SearchResults /> renders matching snapshot 1`] = `
+<div
+  className="results-wrapper"
+>
+  <MovieCard
+    key="511679"
+    mv={
+      Object {
+        "budget": 0,
+        "genres": Array [
+          "Drama",
+        ],
+        "id": 511679,
+        "overview": "",
+        "poster_path": "https://image.tmdb.org/t/p/w500/jwJoURyfm4XxtnYRtIOS2pYR9Np.jpg",
+        "release_date": "2018-03-22",
+        "revenue": 0,
+        "runtime": 90,
+        "tagline": "",
+        "title": "Héctor El Father: Conocerás la verdad",
+        "vote_average": 8.8,
+        "vote_count": 5,
+      }
+    }
+    onClick={[MockFunction]}
+  />
+  <MovieCard
+    key="238"
+    mv={
+      Object {
+        "budget": 6000000,
+        "genres": Array [
+          "Drama",
+          "Crime",
+        ],
+        "id": 238,
+        "overview": "Spanning the years 1945 to 1955, a chronicle of the fictional Italian-American Corleone crime family. When organized crime family patriarch, Vito Corleone barely survives an attempt on his life, his youngest son, Michael steps in to take care of the would-be killers, launching a campaign of bloody revenge.",
+        "poster_path": "https://image.tmdb.org/t/p/w500/rPdtLWNsZmAtoZl9PK7S2wE3qiS.jpg",
+        "release_date": "1972-03-14",
+        "revenue": 245066411,
+        "runtime": 175,
+        "tagline": "An offer you can't refuse.",
+        "title": "The Godfather",
+        "vote_average": 8.5,
+        "vote_count": 7437,
+      }
+    }
+    onClick={[MockFunction]}
+  />
+</div>
+`;

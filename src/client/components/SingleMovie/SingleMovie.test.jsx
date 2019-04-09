@@ -1,4 +1,4 @@
-import { shallow, render } from 'enzyme';
+import { shallow } from 'enzyme';
 import React from 'react';
 import SingleMovie from './SingleMovie';
 
@@ -7,7 +7,7 @@ const onClick = () => {};
 
 describe('<SingleMovie />', () => {
   it('renders matching snapshot', () => {
-    const wrapper = render(<SingleMovie
+    const wrapper = shallow(<SingleMovie
       movieId={movieId}
       onClick={onClick}
     />);
@@ -15,15 +15,7 @@ describe('<SingleMovie />', () => {
   });
 
   it('test fetch(url)', (done) => {
-    global.fetch = jest.fn();
     const onClickJest = jest.fn();
-    const mockSuccessResponse = { movie: {} };
-    const mockJsonPromise = Promise.resolve(mockSuccessResponse);
-    const mockFetchPromise = Promise.resolve({
-      json: () => mockJsonPromise,
-    });
-    jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchPromise);
-
     const wrapper = shallow(<SingleMovie
       movieId={movieId}
       onClick={onClickJest}
@@ -34,7 +26,6 @@ describe('<SingleMovie />', () => {
     button.simulate('click');
     expect(onClickJest.mock.calls.length).toEqual(1);
 
-    expect(global.fetch).toHaveBeenCalledTimes(1);
     expect(global.fetch).toHaveBeenCalledWith('http://react-cdp-api.herokuapp.com/movies/336');
 
     process.nextTick(() => {
