@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { fetchMoviesAction } from '../../actions/actions';
 import SearchResults from '../SearchResults';
 import Logo from '../Logo';
 import Utils from '../Utils/Utils';
@@ -9,7 +7,7 @@ import { COLOR } from '../../constants/constants';
 import enterArrow from '../../img/enter-arrow.svg';
 import './style.scss';
 
-class SearchBlock extends Component {
+export default class SearchBlock extends Component {
   static propTypes = {
     moviesTotalR: PropTypes.number.isRequired,
     fetchMovies: PropTypes.func.isRequired,
@@ -18,7 +16,7 @@ class SearchBlock extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      inputValue: '', // TODO: add 'some' for testing.
+      inputValue: '',
       titleButtonSelected: true,
       sortByRelease: true,
     };
@@ -154,13 +152,3 @@ rating
     );
   }
 }
-
-const mapStateToProps = state => ({
-  moviesTotalR: state.total,
-});
-
-const mapDispatchProps = dispatch => ({
-  fetchMovies: (searchString, searchBy) => dispatch(fetchMoviesAction(searchString, searchBy)),
-});
-
-export default connect(mapStateToProps, mapDispatchProps)(SearchBlock);
