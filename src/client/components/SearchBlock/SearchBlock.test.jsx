@@ -3,10 +3,11 @@ import React from 'react';
 import SearchBlock from './SearchBlock';
 
 const moviesTotalR = 10;
-const fetchMovies = () => {};
+const fetchMovies = jest.fn();
+jest.mock('../SearchResults', () => () => 'SearchResults');
 
 describe('<SearchBlock />', () => {
-  it.skip('renders matching snapshot', () => {
+  it('renders matching snapshot', () => {
     const wrapper = mount(<SearchBlock
       moviesTotalR={moviesTotalR}
       fetchMovies={fetchMovies}
@@ -14,7 +15,7 @@ describe('<SearchBlock />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('check for .search-block-wrapper', () => {
+  it('check for .search-block-wrapper', () => {
     const wrapper = mount(<SearchBlock
       moviesTotalR={moviesTotalR}
       fetchMovies={fetchMovies}
@@ -22,7 +23,7 @@ describe('<SearchBlock />', () => {
     expect(wrapper.find('.search-block-wrapper').length).toBe(1);
   });
 
-  it.skip('check for state change after click SortBy', () => {
+  it('check for state change after click SortBy', () => {
     const wrapper = mount(<SearchBlock
       moviesTotalR={moviesTotalR}
       fetchMovies={fetchMovies}

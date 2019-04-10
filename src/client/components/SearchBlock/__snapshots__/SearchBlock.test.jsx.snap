@@ -2,10 +2,8 @@
 
 exports[`<SearchBlock /> renders matching snapshot 1`] = `
 <SearchBlock
-  movies={Array []}
-  numberFoundMovies={10}
-  onClick={[Function]}
-  searchCB={[Function]}
+  fetchMovies={[MockFunction]}
+  moviesTotalR={10}
 >
   <div
     className="search-block-wrapper"
@@ -122,6 +120,9 @@ exports[`<SearchBlock /> renders matching snapshot 1`] = `
         </span>
       </div>
     </div>
+    <Component>
+      SearchResults
+    </Component>
   </div>
 </SearchBlock>
 `;
