@@ -2,12 +2,14 @@
 
 http://react-cdp-api.herokuapp.com/api-docs
 
-# Task4 (Testing lecture)
+##Task 5 (Flux + Redux) 
 
-Coverage > 60% Write tests using enzyme and jest
+Go through API docs in swagger: https://reactjs-cdp.herokuapp.com/api-docs API Endpoint: https://reactjs-cdp.herokuapp.com/  
 
-Use snapshot testing
+Make your components perform real AJAX requests.
 
-Use coverage tool
+Move data fetches to actions and pass data to your components with redux.
 
-Write at least one e2e test using library from the list: Cypress, CasperJS, Protractor, Nightwatch, Webdriver
+Cover actions and reducers with unit tests.
+
+Add the ability to store your apps state offline and use it to start-up the app. You can take a look at redux-persist library for further reference.
