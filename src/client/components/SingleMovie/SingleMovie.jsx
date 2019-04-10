@@ -1,11 +1,9 @@
 import React, { PureComponent } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { showSearchBlockAction } from '../../actions/actions';
 import Logo from '../Logo';
 import './style.scss';
 
-class SingleMovie extends PureComponent {
+export default class SingleMovie extends PureComponent {
   static propTypes = {
     movieR: PropTypes.objectOf(PropTypes.any).isRequired,
     showSearchBlock: PropTypes.func.isRequired,
@@ -37,13 +35,3 @@ class SingleMovie extends PureComponent {
     );
   }
 }
-
-const mapStateToProps = state => ({
-  movieR: state.movie,
-});
-
-const mapDispatchProps = dispatch => ({
-  showSearchBlock: () => dispatch(showSearchBlockAction([])),
-});
-
-export default connect(mapStateToProps, mapDispatchProps)(SingleMovie);
