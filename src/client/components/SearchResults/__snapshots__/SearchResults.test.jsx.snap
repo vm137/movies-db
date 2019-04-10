@@ -4,9 +4,9 @@ exports[`<SearchResults /> renders matching snapshot 1`] = `
 <div
   className="results-wrapper"
 >
-  <MovieCard
+  <Connect(MovieCard)
     key="511679"
-    mv={
+    movie={
       Object {
         "budget": 0,
         "genres": Array [
@@ -24,11 +24,10 @@ exports[`<SearchResults /> renders matching snapshot 1`] = `
         "vote_count": 5,
       }
     }
-    onClick={[MockFunction]}
   />
-  <MovieCard
+  <Connect(MovieCard)
     key="238"
-    mv={
+    movie={
       Object {
         "budget": 6000000,
         "genres": Array [
@@ -47,7 +46,6 @@ exports[`<SearchResults /> renders matching snapshot 1`] = `
         "vote_count": 7437,
       }
     }
-    onClick={[MockFunction]}
   />
 </div>
 `;
