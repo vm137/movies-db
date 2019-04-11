@@ -4,6 +4,7 @@ import { fetchMoviesAction, swapSearchByAction, swapSortByAction } from '../../a
 
 const mapStateToProps = state => ({
   totalR: state.total,
+  movies: state.movies,
   searchBy: state.searchBy,
   sortBy: state.sortBy,
 });
@@ -11,7 +12,7 @@ const mapStateToProps = state => ({
 const mapDispatchProps = dispatch => ({
   fetchMovies: (searchString, searchBy) => dispatch(fetchMoviesAction(searchString, searchBy)),
   swapSearchBy: () => dispatch(swapSearchByAction()),
-  swapSortBy: () => dispatch(swapSortByAction()),
+  swapSortBy: (movies, sortBy) => dispatch(swapSortByAction(movies, sortBy)),
 });
 
 export default connect(mapStateToProps, mapDispatchProps)(SearchBlock);

@@ -5,6 +5,7 @@ import SearchBlock from './SearchBlock';
 jest.mock('../SearchResults', () => () => 'SearchResults');
 
 const fetchMovies = jest.fn();
+const movies = [];
 const swapSearchBy = jest.fn();
 const swapSortBy = jest.fn();
 const totalR = 10;
@@ -16,6 +17,7 @@ describe('<SearchBlock />', () => {
   it('renders matching snapshot', () => {
     const wrapper = mount(<SearchBlock
       fetchMovies={fetchMovies}
+      movies={movies}
       totalR={totalR}
       swapSearchBy={swapSearchBy}
       swapSortBy={swapSortBy}
@@ -28,6 +30,7 @@ describe('<SearchBlock />', () => {
   it('check for .search-block-wrapper', () => {
     const wrapper = mount(<SearchBlock
       fetchMovies={fetchMovies}
+      movies={movies}
       totalR={totalR}
       swapSearchBy={swapSearchBy}
       swapSortBy={swapSortBy}
@@ -40,6 +43,7 @@ describe('<SearchBlock />', () => {
   it.skip('check for state change after click SortBy', () => {
     const wrapper = mount(<SearchBlock
       fetchMovies={fetchMovies}
+      movies={movies}
       totalR={totalR}
       swapSearchBy={swapSearchBy}
       swapSortBy={swapSortBy}

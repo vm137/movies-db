@@ -47,6 +47,31 @@ export const swapSearchByAction = () => ({
   type: ACTIONS.SWAP_SEARCH_BY,
 });
 
-export const swapSortByAction = () => ({
-  type: ACTIONS.SWAP_SORT_BY,
-});
+function compareByVote(a, b) {
+  if (a.vote_average < b.vote_average) { return -1; }
+  if (a.vote_average > b.vote_average) { return 1; }
+  return 0;
+}
+
+function compareByYear(a, b) {
+  const aYear = parseInt((a.release_date).substring(0, 4), 10);
+  const bYear = parseInt((b.release_date).substring(0, 4), 10);
+
+  if (aYear < bYear) { return -1; }
+  if (aYear > bYear) { return 1; }
+  return 0;
+}
+
+export const swapSortByAction = (movies, sortBy) => {
+  const moviesSorted = movies.slice(0);
+  if (sortBy) {
+    moviesSorted.sort(compareByVote);
+  } else {
+    moviesSorted.sort(compareByYear);
+  }
+
+  return {
+    type: ACTIONS.SWAP_SORT_BY,
+    payload: moviesSorted,
+  };
+};

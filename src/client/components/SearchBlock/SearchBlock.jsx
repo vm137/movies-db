@@ -10,6 +10,7 @@ import './style.scss';
 export default class SearchBlock extends Component {
   static propTypes = {
     fetchMovies: PropTypes.func.isRequired,
+    movies: PropTypes.arrayOf(Object).isRequired,
     totalR: PropTypes.number.isRequired,
     swapSearchBy: PropTypes.func.isRequired,
     swapSortBy: PropTypes.func.isRequired,
@@ -46,8 +47,8 @@ export default class SearchBlock extends Component {
   }
 
   handleSortBy() {
-    const { swapSortBy } = this.props;
-    swapSortBy();
+    const { swapSortBy, movies, sortBy } = this.props;
+    swapSortBy(movies, sortBy);
   }
 
   updateInputValue(evt) {
