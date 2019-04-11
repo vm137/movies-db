@@ -3,6 +3,10 @@
 exports[`<SearchBlock /> renders matching snapshot 1`] = `
 <SearchBlock
   fetchMovies={[MockFunction]}
+  searchBy={true}
+  sortBy={true}
+  swapSearchBy={[MockFunction]}
+  swapSortBy={[MockFunction]}
   totalR={10}
 >
   <div

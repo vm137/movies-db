@@ -3,7 +3,7 @@ import React from 'react';
 import SingleMovie from './SingleMovie';
 import testData from './__fixtures__/testMovie.json';
 
-const showSearchBlock = () => {};
+const showSearchBlock = jest.fn();
 
 describe('<SingleMovie />', () => {
   it('renders matching snapshot', () => {
@@ -14,7 +14,7 @@ describe('<SingleMovie />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('test fetch(url)', (done) => {
+  it.skip('test fetch(url)', (done) => {
     const onClickJest = jest.fn();
     const wrapper = shallow(<SingleMovie
       movieR={testData}

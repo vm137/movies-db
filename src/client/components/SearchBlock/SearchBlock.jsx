@@ -9,8 +9,8 @@ import './style.scss';
 
 export default class SearchBlock extends Component {
   static propTypes = {
-    totalR: PropTypes.number.isRequired,
     fetchMovies: PropTypes.func.isRequired,
+    totalR: PropTypes.number.isRequired,
     swapSearchBy: PropTypes.func.isRequired,
     swapSortBy: PropTypes.func.isRequired,
     searchBy: PropTypes.bool.isRequired,
@@ -33,6 +33,13 @@ export default class SearchBlock extends Component {
     this.textInput.focus();
   }
 
+  handleSearchClick() {
+    const { inputValue } = this.state;
+    const { fetchMovies, searchBy } = this.props;
+    const searchByParam = searchBy ? 'title' : 'genres';
+    fetchMovies(inputValue, searchByParam);
+  }
+
   handleSearchBy() {
     const { swapSearchBy } = this.props;
     swapSearchBy();
@@ -41,13 +48,6 @@ export default class SearchBlock extends Component {
   handleSortBy() {
     const { swapSortBy } = this.props;
     swapSortBy();
-  }
-
-  handleSearchClick() {
-    const { inputValue } = this.state;
-    const { fetchMovies, searchBy } = this.props;
-    const searchByParam = searchBy ? 'title' : 'genres';
-    fetchMovies(inputValue, searchByParam);
   }
 
   updateInputValue(evt) {
