@@ -9,37 +9,45 @@ import './style.scss';
 
 export default class SearchBlock extends Component {
   static propTypes = {
-    moviesTotalR: PropTypes.number.isRequired,
+    totalR: PropTypes.number.isRequired,
     fetchMovies: PropTypes.func.isRequired,
+    swapSearchBy: PropTypes.func.isRequired,
+    swapSortBy: PropTypes.func.isRequired,
+    searchBy: PropTypes.bool.isRequired,
+    sortBy: PropTypes.bool.isRequired,
   };
 
   constructor(props) {
     super(props);
     this.state = {
       inputValue: '',
-      titleButtonSelected: true,
-      sortByRelease: true,
     };
     this.textInput = React.createRef();
     this.onKeyPress = this.handleKeyPress.bind(this);
-    this.swapSearchByButtonsColor = this.swapSearchByButtonsColor.bind(this);
-    this.handleSortByClick = this.handleSortByClick.bind(this);
-    this.makeSearch = this.makeSearch.bind(this);
+    this.handleSearchBy = this.handleSearchBy.bind(this);
+    this.handleSortBy = this.handleSortBy.bind(this);
+    this.handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   componentDidMount() {
     this.textInput.focus();
   }
 
-  swapSearchByButtonsColor() {
-    this.setState(prevState => ({ titleButtonSelected: !prevState.titleButtonSelected }));
+  handleSearchBy() {
+    const { swapSearchBy } = this.props;
+    swapSearchBy();
   }
 
-  makeSearch() {
-    const { titleButtonSelected, inputValue } = this.state;
-    const searchBy = titleButtonSelected ? 'title' : 'genres';
-    const { fetchMovies } = this.props;
-    fetchMovies(inputValue, searchBy);
+  handleSortBy() {
+    const { swapSortBy } = this.props;
+    swapSortBy();
+  }
+
+  handleSearchClick() {
+    const { inputValue } = this.state;
+    const { fetchMovies, searchBy } = this.props;
+    const searchByParam = searchBy ? 'title' : 'genres';
+    fetchMovies(inputValue, searchByParam);
   }
 
   updateInputValue(evt) {
@@ -48,26 +56,17 @@ export default class SearchBlock extends Component {
     });
   }
 
-  handleSortByClick() {
-    const { sortByRelease } = this.state;
-    this.setState({
-      sortByRelease: !sortByRelease,
-    });
-  }
-
   handleKeyPress(e) {
     if (e.key === 'Enter') {
-      this.makeSearch();
+      this.handleSearchClick();
     }
   }
 
   render() {
-    const { moviesTotalR } = this.props;
-    const {
-      inputValue, titleButtonSelected, sortByRelease,
-    } = this.state;
-    const sortReleaseColor = sortByRelease ? COLOR.NETFLIX_RED : COLOR.NETFLIX_GREY;
-    const sortRatingColor = sortByRelease ? COLOR.NETFLIX_GREY : COLOR.NETFLIX_RED;
+    const { totalR, searchBy, sortBy } = this.props;
+    const { inputValue } = this.state;
+    const sortReleaseColor = sortBy ? COLOR.NETFLIX_RED : COLOR.NETFLIX_GREY;
+    const sortRatingColor = sortBy ? COLOR.NETFLIX_GREY : COLOR.NETFLIX_RED;
 
     return (
       <div className="search-block-wrapper">
@@ -91,16 +90,16 @@ export default class SearchBlock extends Component {
             <div className="search-buttons">
               <span className="search-by">search by</span>
               <button
-                className={`btns-search btn-title ${titleButtonSelected ? 'btn-bg-red' : 'btn-bg-grey'}`}
-                onClick={this.swapSearchByButtonsColor}
+                className={`btns-search btn-title ${searchBy ? 'btn-bg-red' : 'btn-bg-grey'}`}
+                onClick={this.handleSearchBy}
                 onKeyPress={Utils.preventPressEnter}
                 type="button"
               >
 title
               </button>
               <button
-                className={`btns-search btn-genre ${!titleButtonSelected ? 'btn-bg-red' : 'btn-bg-grey'}`}
-                onClick={this.swapSearchByButtonsColor}
+                className={`btns-search btn-genre ${!searchBy ? 'btn-bg-red' : 'btn-bg-grey'}`}
+                onClick={this.handleSearchBy}
                 onKeyPress={Utils.preventPressEnter}
                 type="button"
               >
@@ -108,7 +107,7 @@ genre
               </button>
 
               <button
-                onClick={this.makeSearch}
+                onClick={this.handleSearchClick}
                 className="btns-search btn-search"
                 type="submit"
               >
@@ -119,7 +118,7 @@ search
         </div>
         <div className="search-details">
           <div className="number-found-movies">
-            {moviesTotalR}
+            {totalR}
             {' '}
             movies found
           </div>
@@ -131,7 +130,7 @@ search
               onKeyPress={() => {}}
               className="sort-release-date"
               style={{ color: sortReleaseColor }}
-              onClick={this.handleSortByClick}
+              onClick={this.handleSortBy}
             >
               release date
             </span>
@@ -141,7 +140,7 @@ search
               onKeyPress={() => {}}
               className="sort-rating"
               style={{ color: sortRatingColor }}
-              onClick={this.handleSortByClick}
+              onClick={this.handleSortBy}
             >
 rating
             </span>

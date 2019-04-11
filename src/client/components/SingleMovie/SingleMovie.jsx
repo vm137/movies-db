@@ -16,7 +16,7 @@ export default class SingleMovie extends PureComponent {
       <div className="single-movie-wrapper">
         <Logo />
         <img src={movieR.poster_path} alt={movieR.title} />
-        <button className="btn-search" type="button" onClick={showSearchBlock}>search</button>
+        <button className="btn-search" type="button" onClick={showSearchBlock}>back</button>
 
         <div className="movie-details">
           <h2 className="title">{movieR.title}</h2>

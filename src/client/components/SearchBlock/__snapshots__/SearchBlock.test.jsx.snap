@@ -3,7 +3,7 @@
 exports[`<SearchBlock /> renders matching snapshot 1`] = `
 <SearchBlock
   fetchMovies={[MockFunction]}
-  moviesTotalR={10}
+  totalR={10}
 >
   <div
     className="search-block-wrapper"

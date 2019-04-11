@@ -23,7 +23,7 @@ describe('<SearchBlock />', () => {
     expect(wrapper.find('.search-block-wrapper').length).toBe(1);
   });
 
-  it('check for state change after click SortBy', () => {
+  it.skip('check for state change after click SortBy', () => {
     const wrapper = mount(<SearchBlock
       moviesTotalR={moviesTotalR}
       fetchMovies={fetchMovies}

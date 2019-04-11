@@ -2,8 +2,14 @@ import axios from 'axios';
 import { ACTIONS } from '../constants/constants';
 
 /* action creators */
-export const showSearchBlockAction = data => ({
+
+/* Movies */
+export const showSearchBlockAction = () => ({
   type: ACTIONS.SHOW_SEARCH_BLOCK,
+});
+
+export const PropagateMoviesAction = data => ({
+  type: ACTIONS.PROPAGATE_MOVIES,
   payload: data,
 });
 
@@ -13,18 +19,34 @@ export function fetchMoviesAction(searchString, searchBy = '', offset = '', limi
 
   return dispatch => axios.get(callString)
     .then(({ data }) => {
-      dispatch(showSearchBlockAction(data));
+      dispatch(PropagateMoviesAction(data));
     });
 }
 
-export const showSingleMovieAction = data => ({
+/* Single Movie */
+export const showSingleMovieAction = () => ({
   type: ACTIONS.SHOW_SINGLE_MOVIE,
+});
+
+export const PropagateSingleMovieAction = data => ({
+  type: ACTIONS.PROPAGATE_SINGLE_MOVIE,
   payload: data,
 });
 
 export function fetchSingleMovieAction(movieId) {
   return dispatch => axios.get(`http://react-cdp-api.herokuapp.com/movies/${movieId}`)
     .then(({ data }) => {
-      dispatch(showSingleMovieAction(data));
-    });
+      dispatch(PropagateSingleMovieAction(data));
+    }).then(
+      () => dispatch(showSingleMovieAction()),
+    );
 }
+
+/* Search Block controls */
+export const swapSearchByAction = () => ({
+  type: ACTIONS.SWAP_SEARCH_BY,
+});
+
+export const swapSortByAction = () => ({
+  type: ACTIONS.SWAP_SORT_BY,
+});
