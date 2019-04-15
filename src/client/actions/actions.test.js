@@ -57,7 +57,7 @@ describe('actions', () => {
       respFn(dispatch);
 
       moxios.wait(() => {
-        expect(dispatch.mock.calls.length).toEqual(1);
+        expect(dispatch.mock.calls[0]).toEqual([{ payload: 'data', type: 'PROPAGATE_MOVIES' }]);
         done();
       });
     });
@@ -75,7 +75,8 @@ describe('actions', () => {
       respFn(dispatch);
 
       moxios.wait(() => {
-        expect(dispatch.mock.calls.length).toEqual(2);
+        expect(dispatch.mock.calls[0]).toEqual([{ payload: 'data', type: 'PROPAGATE_SINGLE_MOVIE' }]);
+        expect(dispatch.mock.calls[1]).toEqual([{ type: 'SHOW_SINGLE_MOVIE' }]);
         done();
       });
     });
