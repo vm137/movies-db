@@ -1,4 +1,4 @@
-import { ACTIONS } from '../constants/constants';
+import ACTIONS from '../actions/types';
 import rootReducer from './rootReducer';
 
 describe('rootReducer', () => {

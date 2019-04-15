@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import SearchResults from '../SearchResults';
 import Logo from '../Logo';
 import Utils from '../Utils/Utils';
-import { COLOR } from '../../constants/constants';
+import COLOR from '../../constants/constants';
 import enterArrow from '../../img/enter-arrow.svg';
 import './style.scss';
 

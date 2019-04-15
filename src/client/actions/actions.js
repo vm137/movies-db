@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ACTIONS } from '../constants/constants';
+import ACTIONS from './types';
 
 /* action creators */
 

@@ -1,6 +1,6 @@
 import moxios from 'moxios';
 import * as Action from './actions';
-import { ACTIONS } from '../constants/constants';
+import ACTIONS from './types';
 
 describe('actions', () => {
   test('showSearchBlockAction', () => {
