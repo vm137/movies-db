@@ -8,7 +8,7 @@
     "lint": "eslint --ext js,jsx src",
     "test": "jest src",
     "test:cover": "jest src --coverage",
-    "test:watch": "jest src -- --watch",
+    "test:watch": "jest src --watch",
     "ci": "npm run lint && npm run build && npm test",
     "cypress": "cypress open"
   },
@@ -63,7 +63,6 @@
     "jest": "^24.5.0",
     "moxios": "^0.4.0",
     "node-sass": "^4.11.0",
-    "redux-devtools-extension": "^2.13.8",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.29.6",
