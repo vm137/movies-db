@@ -14,7 +14,7 @@ describe('<SingleMovie />', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it.skip('test fetch(url)', (done) => {
+  it('click "back" button', () => {
     const onClickJest = jest.fn();
     const wrapper = shallow(<SingleMovie
       movieR={testData}
@@ -25,16 +25,6 @@ describe('<SingleMovie />', () => {
     expect(button.length).toBe(1);
     button.simulate('click');
 
-    // expect(onClickJest.mock.calls.length).toEqual(1);
-    // expect(global.fetch).toHaveBeenCalledWith('http://react-cdp-api.herokuapp.com/movies/336');
-    //
-    // process.nextTick(() => {
-    //   expect(wrapper.find('.single-movie-wrapper').length).toBe(1);
-    //
-    //   global.fetch.mockClear();
-    //   done();
-    // });
-
-    done();
+    expect(onClickJest.mock.calls.length).toEqual(1);
   });
 });
