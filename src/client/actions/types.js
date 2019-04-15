@@ -1,4 +1,4 @@
-const ACTIONS = {
+const actions = {
   PROPAGATE_MOVIES: 'PROPAGATE_MOVIES',
   SHOW_SEARCH_BLOCK: 'SHOW_SEARCH_BLOCK',
   SHOW_NO_MOVIES_FOUND: 'SHOW_NO_MOVIES_FOUND',
@@ -10,4 +10,4 @@ const ACTIONS = {
   SWAP_SORT_BY: 'SWAP_SORT_BY',
 };
 
-export default ACTIONS;
+export default actions;

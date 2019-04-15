@@ -1,15 +1,15 @@
 import axios from 'axios';
-import ACTIONS from './types';
+import actions from './types';
 
 /* action creators */
 
 /* Movies */
 export const showSearchBlockAction = () => ({
-  type: ACTIONS.SHOW_SEARCH_BLOCK,
+  type: actions.SHOW_SEARCH_BLOCK,
 });
 
 export const PropagateMoviesAction = data => ({
-  type: ACTIONS.PROPAGATE_MOVIES,
+  type: actions.PROPAGATE_MOVIES,
   payload: data,
 });
 
@@ -25,11 +25,11 @@ export function fetchMoviesAction(searchString, searchBy = '', offset = '', limi
 
 /* Single Movie */
 export const showSingleMovieAction = () => ({
-  type: ACTIONS.SHOW_SINGLE_MOVIE,
+  type: actions.SHOW_SINGLE_MOVIE,
 });
 
 export const PropagateSingleMovieAction = data => ({
-  type: ACTIONS.PROPAGATE_SINGLE_MOVIE,
+  type: actions.PROPAGATE_SINGLE_MOVIE,
   payload: data,
 });
 
@@ -44,7 +44,7 @@ export function fetchSingleMovieAction(movieId) {
 
 /* Search Block controls */
 export const swapSearchByAction = () => ({
-  type: ACTIONS.SWAP_SEARCH_BY,
+  type: actions.SWAP_SEARCH_BY,
 });
 
 function compareByVote(a, b) {
@@ -71,7 +71,7 @@ export const swapSortByAction = (movies, sortBy) => {
   }
 
   return {
-    type: ACTIONS.SWAP_SORT_BY,
+    type: actions.SWAP_SORT_BY,
     payload: moviesSorted,
   };
 };

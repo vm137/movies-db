@@ -1,11 +1,11 @@
 import moxios from 'moxios';
 import * as Action from './actions';
-import ACTIONS from './types';
+import actions from './types';
 
 describe('actions', () => {
   test('showSearchBlockAction', () => {
     expect(Action.showSearchBlockAction())
-      .toEqual({ type: ACTIONS.SHOW_SEARCH_BLOCK });
+      .toEqual({ type: actions.SHOW_SEARCH_BLOCK });
   });
 
   it('should sort array by vote/year', () => {
