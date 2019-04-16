@@ -2,62 +2,40 @@ import { mount } from 'enzyme';
 import React from 'react';
 import SearchBlock from './SearchBlock';
 
+jest.mock('../SearchResults', () => () => 'SearchResults');
+
+const fetchMovies = jest.fn();
 const movies = [];
-const numberFoundMovies = 10;
-const searchCB = () => {};
-const onClick = () => {};
+const swapSearchBy = jest.fn();
+const swapSortBy = jest.fn();
+const totalR = 10;
+const searchBy = true;
+const sortBy = true;
 
 describe('<SearchBlock />', () => {
   it('renders matching snapshot', () => {
     const wrapper = mount(<SearchBlock
+      fetchMovies={fetchMovies}
       movies={movies}
-      numberFoundMovies={numberFoundMovies}
-      searchCB={searchCB}
-      onClick={onClick}
+      totalR={totalR}
+      swapSearchBy={swapSearchBy}
+      swapSortBy={swapSortBy}
+      searchBy={searchBy}
+      sortBy={sortBy}
     />);
     expect(wrapper).toMatchSnapshot();
   });
 
   it('check for .search-block-wrapper', () => {
     const wrapper = mount(<SearchBlock
+      fetchMovies={fetchMovies}
       movies={movies}
-      numberFoundMovies={numberFoundMovies}
-      searchCB={searchCB}
-      onClick={onClick}
+      totalR={totalR}
+      swapSearchBy={swapSearchBy}
+      swapSortBy={swapSortBy}
+      searchBy={searchBy}
+      sortBy={sortBy}
     />);
     expect(wrapper.find('.search-block-wrapper').length).toBe(1);
-  });
-
-  it('check for state change after click SortBy', () => {
-    const wrapper = mount(<SearchBlock
-      movies={movies}
-      numberFoundMovies={numberFoundMovies}
-      searchCB={searchCB}
-      onClick={onClick}
-    />);
-
-    const button = wrapper.find('.sort-release-date');
-    expect(button.length).toBe(1);
-
-    let status = wrapper.state().sortByRelease;
-    expect(status).toEqual(true);
-    button.simulate('click');
-    status = wrapper.state().sortByRelease;
-    expect(status).toEqual(false);
-  });
-
-  it('check for searchCB (callback)', () => {
-    const onClickJest = jest.fn();
-    const wrapper = mount(<SearchBlock
-      movies={movies}
-      numberFoundMovies={numberFoundMovies}
-      searchCB={onClickJest}
-      onClick={onClick}
-    />);
-
-    const button = wrapper.find('.btn-search');
-    expect(button.length).toBe(1);
-    button.simulate('click');
-    expect(onClickJest.mock.calls.length).toEqual(1);
   });
 });

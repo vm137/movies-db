@@ -5,38 +5,50 @@ exports[`<SingleMovie /> renders matching snapshot 1`] = `
   className="single-movie-wrapper"
 >
   <Logo />
-  <img />
+  <img
+    alt="Duck, You Sucker"
+    src="https://image.tmdb.org/t/p/w500/nQkr1yi87pX1d3lQVTrBEWlCpT1.jpg"
+  />
   <button
     className="btn-search"
-    onClick={[Function]}
+    onClick={[MockFunction]}
     type="button"
   >
-    search
+    back
   </button>
   <div
     className="movie-details"
   >
     <h2
       className="title"
-    />
+    >
+      Duck, You Sucker
+    </h2>
     <p
       className="tagline"
-    />
+    >
+      Rod Steiger and James Coburn will blow you apart in
+    </p>
     <div
       className="release-wrapper"
     >
       <p
         className="release-date"
-      />
+      >
+        1971
+      </p>
       <p
         className="runtime"
       >
+        157
          min
       </p>
     </div>
     <p
       className="overview"
-    />
+    >
+      At the beginning of the 1913 Mexican Revolution, greedy bandit Juan Miranda and idealist John H. Mallory, an Irish Republican Army explosives expert on the lam from the British, fall in with a band of revolutionaries plotting to strike a national bank. When it turns out that the government has been using the bank as a hiding place for illegally detained political prisoners -- who are freed by the blast -- Miranda becomes a revolutionary hero against his will.
+    </p>
   </div>
 </div>
 `;

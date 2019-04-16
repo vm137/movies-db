@@ -1,3 +1,9 @@
+import { connect } from 'react-redux';
 import MovieCard from './MovieCard';
+import { fetchSingleMovieAction } from '../../actions/actions';
 
-export default MovieCard;
+const mapDispatchProps = {
+  fetchSingleMovie: fetchSingleMovieAction,
+};
+
+export default connect(null, mapDispatchProps)(MovieCard);

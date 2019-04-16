@@ -5,59 +5,32 @@ import './style.scss';
 
 export default class SingleMovie extends PureComponent {
   static propTypes = {
-    movieId: PropTypes.number.isRequired,
-    onClick: PropTypes.func.isRequired,
+    movieR: PropTypes.objectOf(PropTypes.any).isRequired,
+    showSearchBlock: PropTypes.func.isRequired,
   };
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      movie: {},
-    };
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  componentDidMount() {
-    const { movieId } = this.props;
-    const callString = `http://react-cdp-api.herokuapp.com/movies/${movieId}`;
-
-    fetch(callString)
-      .then(response => response.json())
-      .then((myJson) => {
-        this.setState({
-          movie: myJson,
-        });
-      });
-  }
-
-  handleClick() {
-    const { onClick } = this.props;
-    onClick.call();
-  }
-
   render() {
-    const { movie } = this.state;
+    const { movieR, showSearchBlock } = this.props;
 
     return (
       <div className="single-movie-wrapper">
         <Logo />
-        <img src={movie.poster_path} alt={movie.title} />
-        <button className="btn-search" type="button" onClick={this.handleClick}>search</button>
+        <img src={movieR.poster_path} alt={movieR.title} />
+        <button className="btn-search" type="button" onClick={showSearchBlock}>back</button>
 
         <div className="movie-details">
-          <h2 className="title">{movie.title}</h2>
-          <p className="tagline">{movie.tagline}</p>
+          <h2 className="title">{movieR.title}</h2>
+          <p className="tagline">{movieR.tagline}</p>
           <div className="release-wrapper">
-            <p className="release-date">{movie.release_date && (movie.release_date).substr(0, 4)}</p>
+            <p className="release-date">{movieR.release_date && (movieR.release_date).substr(0, 4)}</p>
             <p className="runtime">
-              {movie.runtime}
+              {movieR.runtime}
 &nbsp;min
             </p>
           </div>
-          <p className="overview">{movie.overview}</p>
+          <p className="overview">{movieR.overview}</p>
         </div>
 
-        {/* <SearchResults movies={this.props.movies} /> */}
       </div>
     );
   }

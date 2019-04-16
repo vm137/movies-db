@@ -1,3 +1,6 @@
+import { connect } from 'react-redux';
 import MainWindow from './MainWindow';
 
-export default MainWindow;
+const mapStateToProps = ({ showPage }) => ({ showPage });
+
+export default connect(mapStateToProps)(MainWindow);
