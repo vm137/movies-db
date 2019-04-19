@@ -5,7 +5,7 @@ import './style.scss';
 export default class MovieCard extends PureComponent {
   static propTypes = {
     movie: PropTypes.objectOf(PropTypes.any).isRequired,
-    fetchSingleMovie: PropTypes.func.isRequired,
+    history: PropTypes.objectOf(PropTypes.any).isRequired,
   };
 
   constructor(props) {
@@ -14,8 +14,8 @@ export default class MovieCard extends PureComponent {
   }
 
   handleClick() {
-    const { fetchSingleMovie, movie } = this.props;
-    fetchSingleMovie(movie.id);
+    const { movie, history } = this.props;
+    history.push(`/film/${movie.id}`);
   }
 
   render() {
