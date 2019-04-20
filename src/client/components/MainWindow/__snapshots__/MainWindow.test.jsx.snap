@@ -4,6 +4,25 @@ exports[`<MainWindow /> renders matching snapshot 1`] = `
 <div
   className="mainWindow"
 >
-  <Connect(SearchBlock) />
+  <BrowserRouter>
+    <Switch>
+      <Route
+        exact={true}
+        path="/"
+        render={[Function]}
+      />
+      <Route
+        component={[Function]}
+        path="/search/:query?"
+      />
+      <Route
+        component={[Function]}
+        path="/film/:id"
+      />
+      <Route
+        component={[Function]}
+      />
+    </Switch>
+  </BrowserRouter>
 </div>
 `;

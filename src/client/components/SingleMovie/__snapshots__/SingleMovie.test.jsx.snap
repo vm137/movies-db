@@ -11,7 +11,7 @@ exports[`<SingleMovie /> renders matching snapshot 1`] = `
   />
   <button
     className="btn-search"
-    onClick={[MockFunction]}
+    onClick={[Function]}
     type="button"
   >
     back

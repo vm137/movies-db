@@ -5,7 +5,11 @@ import './style.scss';
 export default class MovieCard extends PureComponent {
   static propTypes = {
     movie: PropTypes.objectOf(PropTypes.any).isRequired,
-    history: PropTypes.objectOf(PropTypes.any).isRequired,
+    history: PropTypes.objectOf(PropTypes.any),
+  };
+
+  static defaultProps = {
+    history: {},
   };
 
   constructor(props) {

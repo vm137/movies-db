@@ -16,8 +16,21 @@ export default class SearchBlock extends Component {
     swapSortBy: PropTypes.func.isRequired,
     searchBy: PropTypes.bool.isRequired,
     sortBy: PropTypes.bool.isRequired,
-    match: PropTypes.objectOf(PropTypes.any).isRequired,
-    history: PropTypes.objectOf(PropTypes.any).isRequired,
+    history: PropTypes.objectOf(PropTypes.any),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        query: PropTypes.string,
+      }),
+    }),
+  };
+
+  static defaultProps = {
+    history: {},
+    match: {
+      params: {
+        query: '',
+      },
+    },
   };
 
   constructor(props) {

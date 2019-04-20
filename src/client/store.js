@@ -6,7 +6,6 @@ import reducer from './reducers/rootReducer';
 
 const initialState = {
   inputValue: '',
-  showPage: 'searchBlock',
   movies: [],
   movie: {},
   limit: 10,
