@@ -1,21 +1,11 @@
 import React from 'react';
 import {
-  BrowserRouter as Router, Route, Link, Switch, Redirect,
+  BrowserRouter as Router, Route, Switch, Redirect,
 } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import SearchBlock from '../SearchBlock';
 import SingleMovie from '../SingleMovie';
+import NoMatch from '../NoMatch';
 import './style.scss';
-
-const NoMatch = ({ location }) => (
-  <div>
-    <h3>
-      Page 404. No match for
-      <code>{location.pathname}</code>
-    </h3>
-    <Link to="/search">back to search</Link>
-  </div>
-);
 
 const MainWindow = () => (
   <div className="mainWindow">
@@ -29,9 +19,5 @@ const MainWindow = () => (
     </Router>
   </div>
 );
-
-NoMatch.propTypes = {
-  location: PropTypes.objectOf(PropTypes.any).isRequired,
-};
 
 export default MainWindow;
