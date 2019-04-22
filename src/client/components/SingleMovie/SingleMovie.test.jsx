@@ -4,6 +4,7 @@ import SingleMovie from './SingleMovie';
 import testData from './__fixtures__/testMovie.json';
 
 const fetchSingleMovie = jest.fn();
+const eraseSingleMovieAction = jest.fn();
 const historyPush = jest.fn();
 const history = {
   push: historyPush,
@@ -18,6 +19,7 @@ describe('<SingleMovie />', () => {
   it('renders matching snapshot', () => {
     const wrapper = shallow(<SingleMovie
       movieR={testData}
+      eraseSingleMovieAction={eraseSingleMovieAction}
       fetchSingleMovie={fetchSingleMovie}
       history={history}
       match={match}
@@ -28,6 +30,7 @@ describe('<SingleMovie />', () => {
   test('click "back" button', () => {
     const wrapper = shallow(<SingleMovie
       movieR={testData}
+      eraseSingleMovieAction={eraseSingleMovieAction}
       fetchSingleMovie={fetchSingleMovie}
       history={history}
       match={match}

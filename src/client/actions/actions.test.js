@@ -1,13 +1,7 @@
 import moxios from 'moxios';
 import * as Action from './actions';
-import actions from './types';
 
 describe('actions', () => {
-  test('showSearchBlockAction', () => {
-    expect(Action.showSearchBlockAction())
-      .toEqual({ type: actions.SHOW_SEARCH_BLOCK });
-  });
-
   it('should sort array by vote/year', () => {
     let sortBy = true; // by vote
     const movies = [{
@@ -76,7 +70,6 @@ describe('actions', () => {
 
       moxios.wait(() => {
         expect(dispatch.mock.calls[0]).toEqual([{ payload: 'data', type: 'PROPAGATE_SINGLE_MOVIE' }]);
-        expect(dispatch.mock.calls[1]).toEqual([{ type: 'SHOW_SINGLE_MOVIE' }]);
         done();
       });
     });
