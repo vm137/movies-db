@@ -9,6 +9,7 @@ const config = {
   },
   devServer: {
     contentBase: path.resolve(__dirname, 'public'),
+    historyApiFallback: true,
   },
   module: {
     rules: [

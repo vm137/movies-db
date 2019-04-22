@@ -2,11 +2,8 @@ import actions from '../actions/types';
 
 export default (state, action) => {
   switch (action.type) {
-    case actions.SHOW_SEARCH_BLOCK:
-      return { ...state, showPage: 'searchBlock' };
-
-    case actions.SHOW_SINGLE_MOVIE:
-      return { ...state, showPage: 'singleMovie' };
+    case actions.ERASE_SINGLE_MOVIE:
+      return { ...state, movie: {} };
 
     case actions.PROPAGATE_MOVIES:
       return { ...state, movies: action.payload.data, total: action.payload.total };

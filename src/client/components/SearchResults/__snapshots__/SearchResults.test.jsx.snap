@@ -4,7 +4,7 @@ exports[`<SearchResults /> renders matching snapshot 1`] = `
 <div
   className="results-wrapper"
 >
-  <Connect(MovieCard)
+  <withRouter(MovieCard)
     key="511679"
     movie={
       Object {
@@ -25,7 +25,7 @@ exports[`<SearchResults /> renders matching snapshot 1`] = `
       }
     }
   />
-  <Connect(MovieCard)
+  <withRouter(MovieCard)
     key="238"
     movie={
       Object {

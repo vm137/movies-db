@@ -2,16 +2,6 @@ import actions from '../actions/types';
 import rootReducer from './rootReducer';
 
 describe('rootReducer', () => {
-  it('SHOW_SEARCH_BLOCK', () => {
-    const newState = rootReducer({}, { type: actions.SHOW_SEARCH_BLOCK });
-    expect(newState.showPage).toEqual('searchBlock');
-  });
-
-  it('SHOW_SINGLE_MOVIE', () => {
-    const newState = rootReducer({}, { type: actions.SHOW_SINGLE_MOVIE });
-    expect(newState.showPage).toEqual('singleMovie');
-  });
-
   it('PROPAGATE_MOVIES', () => {
     const newState = rootReducer({}, {
       type: actions.PROPAGATE_MOVIES,

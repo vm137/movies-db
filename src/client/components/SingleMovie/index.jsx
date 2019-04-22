@@ -1,13 +1,15 @@
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SingleMovie from './SingleMovie';
-import { showSearchBlockAction } from '../../actions/actions';
+import { eraseSingleMovieAction, fetchSingleMovieAction } from '../../actions/actions';
 
 const mapStateToProps = state => ({
   movieR: state.movie,
 });
 
 const mapDispatchProps = dispatch => ({
-  showSearchBlock: () => dispatch(showSearchBlockAction([])),
+  eraseSingleMovieAction: () => dispatch(eraseSingleMovieAction()),
+  fetchSingleMovie: movieId => dispatch(fetchSingleMovieAction(movieId)),
 });
 
-export default connect(mapStateToProps, mapDispatchProps)(SingleMovie);
+export default withRouter(connect(mapStateToProps, mapDispatchProps)(SingleMovie));

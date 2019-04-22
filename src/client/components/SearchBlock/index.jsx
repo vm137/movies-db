@@ -1,3 +1,4 @@
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SearchBlock from './SearchBlock';
 import { fetchMoviesAction, swapSearchByAction, swapSortByAction } from '../../actions/actions';
@@ -15,4 +16,4 @@ const mapDispatchProps = dispatch => ({
   swapSortBy: (movies, sortBy) => dispatch(swapSortByAction(movies, sortBy)),
 });
 
-export default connect(mapStateToProps, mapDispatchProps)(SearchBlock);
+export default withRouter(connect(mapStateToProps, mapDispatchProps)(SearchBlock));

@@ -16,6 +16,21 @@ export default class SearchBlock extends Component {
     swapSortBy: PropTypes.func.isRequired,
     searchBy: PropTypes.bool.isRequired,
     sortBy: PropTypes.bool.isRequired,
+    history: PropTypes.objectOf(PropTypes.any),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        query: PropTypes.string,
+      }),
+    }),
+  };
+
+  static defaultProps = {
+    history: {},
+    match: {
+      params: {
+        query: '',
+      },
+    },
   };
 
   constructor(props) {
@@ -31,14 +46,28 @@ export default class SearchBlock extends Component {
   }
 
   componentDidMount() {
+    const { fetchMovies, match, searchBy } = this.props;
+    const { query } = match.params;
+    const searchByParam = searchBy ? 'title' : 'genres';
+    if (query && query.length > 0) {
+      this.setState({
+        inputValue: query,
+      });
+      fetchMovies(query, searchByParam);
+    }
+
     this.textInput.focus();
   }
 
   handleSearchClick() {
     const { inputValue } = this.state;
-    const { fetchMovies, searchBy } = this.props;
+    const { fetchMovies, searchBy, history } = this.props;
     const searchByParam = searchBy ? 'title' : 'genres';
-    fetchMovies(inputValue, searchByParam);
+
+    if (inputValue.length > 0) {
+      history.push(`/search/${inputValue}`);
+      fetchMovies(inputValue, searchByParam);
+    }
   }
 
   handleSearchBy() {

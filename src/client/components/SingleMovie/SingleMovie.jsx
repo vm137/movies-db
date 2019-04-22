@@ -6,17 +6,50 @@ import './style.scss';
 export default class SingleMovie extends PureComponent {
   static propTypes = {
     movieR: PropTypes.objectOf(PropTypes.any).isRequired,
-    showSearchBlock: PropTypes.func.isRequired,
+    fetchSingleMovie: PropTypes.func.isRequired,
+    eraseSingleMovieAction: PropTypes.func.isRequired,
+    history: PropTypes.objectOf(PropTypes.any),
+    match: PropTypes.shape({
+      params: PropTypes.shape({
+        id: PropTypes.string,
+      }),
+    }),
   };
 
+  static defaultProps = {
+    history: {},
+    match: {
+      params: {
+        id: '',
+      },
+    },
+  };
+
+  constructor(props) {
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  componentDidMount() {
+    const { fetchSingleMovie, match } = this.props;
+    const movieId = match.params.id;
+    fetchSingleMovie(movieId);
+  }
+
+  handleClick() {
+    const { history, eraseSingleMovieAction } = this.props;
+    eraseSingleMovieAction();
+    history.push('/search');
+  }
+
   render() {
-    const { movieR, showSearchBlock } = this.props;
+    const { movieR } = this.props;
 
     return (
       <div className="single-movie-wrapper">
         <Logo />
         <img src={movieR.poster_path} alt={movieR.title} />
-        <button className="btn-search" type="button" onClick={showSearchBlock}>back</button>
+        <button className="btn-search" type="button" onClick={this.handleClick}>back</button>
 
         <div className="movie-details">
           <h2 className="title">{movieR.title}</h2>

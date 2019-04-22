@@ -1,13 +1,7 @@
 import axios from 'axios';
 import actions from './types';
 
-/* action creators */
-
 /* Movies */
-export const showSearchBlockAction = () => ({
-  type: actions.SHOW_SEARCH_BLOCK,
-});
-
 export const PropagateMoviesAction = data => ({
   type: actions.PROPAGATE_MOVIES,
   payload: data,
@@ -24,8 +18,8 @@ export function fetchMoviesAction(searchString, searchBy = '', offset = '', limi
 }
 
 /* Single Movie */
-export const showSingleMovieAction = () => ({
-  type: actions.SHOW_SINGLE_MOVIE,
+export const eraseSingleMovieAction = () => ({
+  type: actions.ERASE_SINGLE_MOVIE,
 });
 
 export const PropagateSingleMovieAction = data => ({
@@ -37,9 +31,7 @@ export function fetchSingleMovieAction(movieId) {
   return dispatch => axios.get(`http://react-cdp-api.herokuapp.com/movies/${movieId}`)
     .then(({ data }) => {
       dispatch(PropagateSingleMovieAction(data));
-    }).then(
-      () => dispatch(showSingleMovieAction()),
-    );
+    });
 }
 
 /* Search Block controls */
