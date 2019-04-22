@@ -1,13 +1,14 @@
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import SingleMovie from './SingleMovie';
-import { fetchSingleMovieAction } from '../../actions/actions';
+import { eraseSingleMovieAction, fetchSingleMovieAction } from '../../actions/actions';
 
 const mapStateToProps = state => ({
   movieR: state.movie,
 });
 
 const mapDispatchProps = dispatch => ({
+  eraseSingleMovieAction: () => dispatch(eraseSingleMovieAction()),
   fetchSingleMovie: movieId => dispatch(fetchSingleMovieAction(movieId)),
 });
 

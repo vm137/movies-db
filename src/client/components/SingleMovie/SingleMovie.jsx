@@ -7,6 +7,7 @@ export default class SingleMovie extends PureComponent {
   static propTypes = {
     movieR: PropTypes.objectOf(PropTypes.any).isRequired,
     fetchSingleMovie: PropTypes.func.isRequired,
+    eraseSingleMovieAction: PropTypes.func.isRequired,
     history: PropTypes.objectOf(PropTypes.any),
     match: PropTypes.shape({
       params: PropTypes.shape({
@@ -36,7 +37,8 @@ export default class SingleMovie extends PureComponent {
   }
 
   handleClick() {
-    const { history } = this.props;
+    const { history, eraseSingleMovieAction } = this.props;
+    eraseSingleMovieAction();
     history.push('/search');
   }
 
