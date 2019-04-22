@@ -50,6 +50,9 @@ export default class SearchBlock extends Component {
     const { query } = match.params;
     const searchByParam = searchBy ? 'title' : 'genres';
     if (query && query.length > 0) {
+      this.setState({
+        inputValue: query,
+      });
       fetchMovies(query, searchByParam);
     }
 
