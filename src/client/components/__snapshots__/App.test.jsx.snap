@@ -4,38 +4,9 @@ exports[`<App /> renders matching snapshot 1`] = `
 <div
   className="wrapper"
 >
-  <Provider
-    store={
-      Object {
-        "dispatch": [Function],
-        "getState": [Function],
-        "replaceReducer": [Function],
-        "subscribe": [Function],
-        Symbol(observable): [Function],
-      }
-    }
-  >
-    <PersistGate
-      loading={null}
-      persistor={
-        Object {
-          "dispatch": [Function],
-          "flush": [Function],
-          "getState": [Function],
-          "pause": [Function],
-          "persist": [Function],
-          "purge": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        }
-      }
-    >
-      <ErrorBoundary>
-        <Connect(MainWindow) />
-      </ErrorBoundary>
-    </PersistGate>
-  </Provider>
+  <ErrorBoundary>
+    <Connect(MainWindow) />
+  </ErrorBoundary>
   <div
     className="push"
   />
