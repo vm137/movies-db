@@ -1,15 +1,14 @@
 const path = require('path');
+const webpack = require('webpack');
 
-const config = {
-  entry: path.resolve(__dirname, 'src/client/index'),
+const isDevMod = process.env.NODE_ENV === 'development';
+
+module.exports = {
+  mode: process.env.NODE_ENV,
+
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/',
+    path: path.resolve('./public'),
     filename: 'bundle.js',
-  },
-  devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
-    historyApiFallback: true,
   },
   module: {
     rules: [
@@ -30,7 +29,11 @@ const config = {
   },
   resolve: {
     extensions: ['.js', '.jsx'],
+    alias: {
+      'react-dom': '@hot-loader/react-dom',
+    },
   },
+  plugins: [
+    isDevMod ? new webpack.NamedModulesPlugin() : new webpack.HashedModuleIdsPlugin(),
+  ],
 };
-
-module.exports = config;

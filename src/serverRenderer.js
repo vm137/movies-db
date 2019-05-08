@@ -1,6 +1,6 @@
 import React from 'react';
-// import { renderToString } from 'react-dom/server';
-// import App from './components/App';
+import { renderToString } from 'react-dom/server';
+import App from './components/App';
 
 function renderHTML(html) {
   return `
@@ -22,7 +22,10 @@ function renderHTML(html) {
   `;
 }
 
-module.exports = (req, res) => {
-  // eslint-disable-next-line react/jsx-filename-extension
-  res.send(renderHTML(<App />));
-};
+export default function serverRenderer() {
+  return (req, res) => {
+    const htmlString = renderToString(<App />);
+
+    res.send(renderHTML(htmlString));
+  };
+}
