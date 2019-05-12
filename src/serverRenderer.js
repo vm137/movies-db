@@ -1,5 +1,6 @@
 import React from 'react';
 import { renderToString } from 'react-dom/server';
+import { StaticRouter } from 'react-router-dom';
 import App from './components/App';
 
 function renderHTML(html) {
@@ -24,8 +25,26 @@ function renderHTML(html) {
 
 export default function serverRenderer() {
   return (req, res) => {
-    // eslint-disable-next-line react/jsx-filename-extension
-    const htmlString = renderToString(<App />);
+    const context = {};
+
+    const root = (
+      // eslint-disable-next-line react/jsx-filename-extension
+      <App
+        context={context}
+        location={req.url}
+        Router={StaticRouter}
+      />
+    );
+
+    const htmlString = renderToString(root);
+
+    if (context.url) {
+      res.writeHead(302, {
+        Location: context.url,
+      });
+      res.end();
+      return;
+    }
 
     res.send(renderHTML(htmlString));
   };
