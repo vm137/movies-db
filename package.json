@@ -9,7 +9,7 @@
     "test": "jest src",
     "test:cover": "jest src --coverage",
     "test:watch": "jest src --watch",
-    "ci": "npm run lint && npm run build && npm test",
+    "ci": "npm run lint && npm test",
     "cypress": "cypress open",
     "ssr": "cross-env NODE_ENV=development  node src/server/index.js"
   },
