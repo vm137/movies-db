@@ -14,7 +14,14 @@ module.exports = merge(common, {
     isDevMod && 'webpack-hot-middleware/client',
     './src/index.jsx',
   ].filter(Boolean),
-
+  module: {
+    rules: [
+      {
+        test: /\.s?css$/,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+    ],
+  },
   plugins: [
     !isDevMod && new CleanWebpackPlugin('./public',
       { root: path.resolve(__dirname, '../') }),
