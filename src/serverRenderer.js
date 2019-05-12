@@ -24,6 +24,7 @@ function renderHTML(html) {
 
 export default function serverRenderer() {
   return (req, res) => {
+    // eslint-disable-next-line react/jsx-filename-extension
     const htmlString = renderToString(<App />);
 
     res.send(renderHTML(htmlString));

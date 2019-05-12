@@ -1,12 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
 import App from './components/App';
-import store from './store';
 
-ReactDOM.hydrate(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app'),
-);
+ReactDOM.hydrate(<App />, document.getElementById('app'));

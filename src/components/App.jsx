@@ -1,12 +1,16 @@
 import React from 'react';
+import { Provider } from 'react-redux';
 import './App.scss';
 import ErrorBoundary from './ErrorBoundary';
 import MainWindow from './MainWindow';
+import store from '../store';
 
 const App = () => (
   <div className="wrapper">
     <ErrorBoundary>
-      <MainWindow />
+      <Provider store={store}>
+        <MainWindow />
+      </Provider>
     </ErrorBoundary>
     <div className="push" />
   </div>
