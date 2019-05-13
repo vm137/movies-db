@@ -14,7 +14,7 @@ if (process.env.NODE_ENV === 'development') {
   app.use(webpackHotMiddleware(compiler.compilers.find(c => c.name === 'client')));
   app.use(webpackHotServerMiddleware(compiler));
 } else {
-  // eslint-disable-next-line global-require
+  // eslint-disable-next-line import/no-unresolved,global-require
   const serverRenderer = require('../dist/js/serverRenderer').default;
 
   app.use(express.static('dist'));
