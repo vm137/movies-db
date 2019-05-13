@@ -4,14 +4,15 @@
   "description": "react movie database",
   "scripts": {
     "start": "cross-env NODE_ENV=development  node ./server",
-    "build": "webpack --mode=production",
+    "start-prod": "npm run build && cross-env NODE_ENV=production node ./server",
+    "build": "webpack --mode=production --config ./webpack",
     "lint": "eslint --ext js,jsx src server webpack",
     "test": "jest src",
     "test:cover": "jest src --coverage",
     "test:watch": "jest src --watch",
-    "ci": "npm run lint && npm test",
-    "cypress": "cypress open",
-    "ssr": "cross-env NODE_ENV=development  node src/server/index.js"
+    "flow": "flow",
+    "ci": "npm run lint && npm test && npm run build",
+    "cypress": "cypress open"
   },
   "repository": {
     "type": "git",

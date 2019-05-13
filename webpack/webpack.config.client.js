@@ -23,8 +23,10 @@ module.exports = merge(common, {
     ],
   },
   plugins: [
-    !isDevMod && new CleanWebpackPlugin('./public',
-      { root: path.resolve(__dirname, '../') }),
+    !isDevMod && new CleanWebpackPlugin(
+      './dist',
+      { root: path.resolve(__dirname, '../') },
+    ),
     isDevMod && new webpack.HotModuleReplacementPlugin(),
   ].filter(Boolean),
 });

@@ -5,17 +5,7 @@ exports[`<App /> renders matching snapshot 1`] = `
   className="wrapper"
 >
   <ErrorBoundary>
-    <Provider
-      store={
-        Object {
-          "dispatch": [Function],
-          "getState": [Function],
-          "replaceReducer": [Function],
-          "subscribe": [Function],
-          Symbol(observable): [Function],
-        }
-      }
-    >
+    <Provider>
       <Connect(MainWindow) />
     </Provider>
   </ErrorBoundary>

@@ -17,12 +17,10 @@ const initialState = {
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
-const store = createStore(
+export default preloadedState => createStore(
   reducer,
-  initialState,
+  preloadedState || initialState,
   compose(
     applyMiddleware(thunk),
   ),
 );
-
-export default store;

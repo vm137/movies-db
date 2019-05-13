@@ -7,7 +7,7 @@ module.exports = {
   mode: process.env.NODE_ENV,
 
   output: {
-    path: path.resolve('./public'),
+    path: path.resolve('./dist'),
     filename: 'bundle.js',
   },
   module: {
@@ -19,7 +19,14 @@ module.exports = {
       },
       {
         test: /\.(png|jpg|gif|svg)$/,
-        use: 'file-loader',
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              publicPath: '/',
+            },
+          },
+        ],
       },
     ],
   },
