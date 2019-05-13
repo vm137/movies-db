@@ -5,7 +5,7 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development  node ./server",
     "build": "webpack --mode=production",
-    "lint": "eslint --ext js,jsx src",
+    "lint": "eslint --ext js,jsx src server webpack",
     "test": "jest src",
     "test:cover": "jest src --coverage",
     "test:watch": "jest src --watch",
