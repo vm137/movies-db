@@ -14,15 +14,13 @@ const initialState = {
 };
 
 /* eslint-disable no-underscore-dangle */
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 /* eslint-enable */
 
-const store = createStore(
+export default preloadedState => createStore(
   reducer,
-  initialState,
-  composeEnhancers(
+  preloadedState || initialState,
+  compose(
     applyMiddleware(thunk),
   ),
 );
-
-export default store;

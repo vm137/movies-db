@@ -5,7 +5,9 @@ exports[`<App /> renders matching snapshot 1`] = `
   className="wrapper"
 >
   <ErrorBoundary>
-    <Connect(MainWindow) />
+    <Provider>
+      <Connect(MainWindow) />
+    </Provider>
   </ErrorBoundary>
   <div
     className="push"
