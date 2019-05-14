@@ -1,22 +1,15 @@
 # movies-db
 
-http://react-cdp-api.herokuapp.com/api-docs
+React-js application. 
 
-### Task 7 (Server Side Rendering)  
-Implement server rendering in your NodeJS application.  
-Use async actions, redux should provide initial state from server.  
-Server should handle query parameters to compute correct initial state.  
-Implement route masking. Next.js provides this functionality out of the box, but its usage is not required.  
-Example of route masking:    
-`localhost/search/Hello%20Friend`  
-`localhost/film/id`  
+Single Page Application, which allows users to search the Movies DB database.  
+Api Swagger documentation: https://reactjs-cdp.herokuapp.com/api-docs    
 
-  
-Add code splitting to your app.  
-You can use dynamic `import()` syntax in conjunction with webpack, some library (react-loadable), or next.js.  
 
-### Evaluation criteria:
-**"2"**. Async actions, redux provides initial state from server.  
-**"3"**. Server app handles query params to compute initial state.  
-**"4"**. Route masking. Can be implemented, or mentee can switch to next.js for SSR.  
-**"5"**. Code splitting for optimized performance. Goes OOTB with next.js.
+`npm run start` - run in development mode  
+
+to build and run production version with SSR:  
+`npm run build`  
+`node ./dist/js/serverRenderer.js`  
+hit [http://localhost:8001](http://localhost:8001)  
+
