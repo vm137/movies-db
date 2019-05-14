@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import SearchBlock from '../SearchBlock';
@@ -5,8 +7,13 @@ import SingleMovie from '../SingleMovie';
 import NoMatch from '../NoMatch';
 import './style.scss';
 
-// eslint-disable-next-line react/prop-types
-const MainWindow = ({ Router, location, context }) => (
+type Props = {
+  Router: Function,
+  location: string,
+  context: Object
+}
+
+const MainWindow = ({ Router, location, context }: Props) => (
   <div className="mainWindow">
     <Router location={location} context={context}>
       <Switch>
