@@ -1,8 +1,13 @@
+// @flow
+
 import React from 'react';
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
 
-const NoMatch = ({ location }) => (
+type Props = {
+  location: Object,
+}
+
+const NoMatch = ({ location }: Props) => (
   <div>
     <h3>
       Page 404. No match for
@@ -11,9 +16,5 @@ const NoMatch = ({ location }) => (
     <Link to="/search">back to search</Link>
   </div>
 );
-
-NoMatch.propTypes = {
-  location: PropTypes.objectOf(PropTypes.any).isRequired,
-};
 
 export default NoMatch;

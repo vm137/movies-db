@@ -1,33 +1,23 @@
+// @flow
+
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
 import Logo from '../Logo';
 import './style.scss';
 
-export default class SingleMovie extends PureComponent {
-  static propTypes = {
-    movieR: PropTypes.objectOf(PropTypes.any).isRequired,
-    fetchSingleMovie: PropTypes.func.isRequired,
-    eraseSingleMovieAction: PropTypes.func.isRequired,
-    history: PropTypes.objectOf(PropTypes.any),
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string,
-      }),
-    }),
-  };
+type DefaultProps = {| history: {}, match: { params: {id: ''} } |};
+type Props = {
+  ...DefaultProps,
+  movieR: Object,
+  fetchSingleMovie: Function,
+  eraseSingleMovieAction: Function,
+  history: Object,
+  match: Object,
+};
 
-  static defaultProps = {
-    history: {},
-    match: {
-      params: {
-        id: '',
-      },
-    },
-  };
-
-  constructor(props) {
+export default class SingleMovie extends PureComponent<Props> {
+  constructor(props: Props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    (this: Object).handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
