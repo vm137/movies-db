@@ -1,5 +1,6 @@
+// @flow
+
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import SearchResults from '../SearchResults';
 import Logo from '../Logo';
 import Utils from '../Utils/Utils';
@@ -7,42 +8,35 @@ import COLOR from '../../constants/constants';
 import enterArrow from '../../img/enter-arrow.svg';
 import './style.scss';
 
-export default class SearchBlock extends Component {
-  static propTypes = {
-    fetchMovies: PropTypes.func.isRequired,
-    movies: PropTypes.arrayOf(Object).isRequired,
-    totalR: PropTypes.number.isRequired,
-    swapSearchBy: PropTypes.func.isRequired,
-    swapSortBy: PropTypes.func.isRequired,
-    searchBy: PropTypes.bool.isRequired,
-    sortBy: PropTypes.bool.isRequired,
-    history: PropTypes.objectOf(PropTypes.any),
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        query: PropTypes.string,
-      }),
-    }),
-  };
+type DefaultProps = {| history: {}, match: { params: {query: ''} } |};
+type Props = {
+    ...DefaultProps,
+  fetchMovies: Function,
+  movies: Object,
+  totalR: Object,
+  swapSearchBy: Function,
+  swapSortBy: Function,
+  searchBy: Boolean,
+  sortBy: Boolean,
+  history: Object,
+  match: Object
+};
 
-  static defaultProps = {
-    history: {},
-    match: {
-      params: {
-        query: '',
-      },
-    },
-  };
+type State = {
+  inputValue: Object
+};
 
-  constructor(props) {
+export default class SearchBlock extends Component<Props, State> {
+  constructor(props: Props) {
     super(props);
     this.state = {
       inputValue: '',
     };
-    this.textInput = React.createRef();
-    this.onKeyPress = this.handleKeyPress.bind(this);
-    this.handleSearchBy = this.handleSearchBy.bind(this);
-    this.handleSortBy = this.handleSortBy.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
+    (this: Object).textInput = React.createRef();
+    (this: Object).onKeyPress = this.handleKeyPress.bind(this);
+    (this: Object).handleSearchBy = this.handleSearchBy.bind(this);
+    (this: Object).handleSortBy = this.handleSortBy.bind(this);
+    (this: Object).handleSearchClick = this.handleSearchClick.bind(this);
   }
 
   componentDidMount() {
@@ -56,7 +50,7 @@ export default class SearchBlock extends Component {
       fetchMovies(query, searchByParam);
     }
 
-    this.textInput.focus();
+    (this: Object).textInput.focus();
   }
 
   handleSearchClick() {
@@ -80,13 +74,14 @@ export default class SearchBlock extends Component {
     swapSortBy(movies, sortBy);
   }
 
-  updateInputValue(evt) {
+  // eslint-disable-next-line no-undef
+  updateInputValue(event: SyntheticInputEvent<HTMLInputElement>): void {
     this.setState({
-      inputValue: evt.target.value, // TODO: make search hints
+      inputValue: event.target.value,
     });
   }
 
-  handleKeyPress(e) {
+  handleKeyPress(e: KeyboardEvent) {
     if (e.key === 'Enter') {
       this.handleSearchClick();
     }
@@ -109,8 +104,8 @@ export default class SearchBlock extends Component {
               <input
                 value={inputValue}
                 onChange={evt => this.updateInputValue(evt)}
-                onKeyPress={this.onKeyPress}
-                ref={(input) => { this.textInput = input; }}
+                onKeyPress={(this: Object).onKeyPress}
+                ref={(input) => { (this: Object).textInput = input; }}
                 className="search-input"
                 type="text"
               />
