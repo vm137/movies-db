@@ -10,6 +10,7 @@
     "test": "jest src",
     "test:cover": "jest src --coverage",
     "test:watch": "jest src --watch",
+    "test:update-snapshots": "npm test -- -u",
     "flow": "flow",
     "ci": "npm run lint && npm run flow && npm test && npm run build",
     "cypress": "cypress open"

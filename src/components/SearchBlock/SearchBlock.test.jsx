@@ -11,6 +11,7 @@ const swapSortBy = jest.fn();
 const totalR = 10;
 const searchBy = true;
 const sortBy = true;
+const match = { params: { query: '' } };
 
 describe('<SearchBlock />', () => {
   it('renders matching snapshot', () => {
@@ -22,6 +23,7 @@ describe('<SearchBlock />', () => {
       swapSortBy={swapSortBy}
       searchBy={searchBy}
       sortBy={sortBy}
+      match={match}
     />);
     expect(wrapper).toMatchSnapshot();
   });
@@ -35,6 +37,7 @@ describe('<SearchBlock />', () => {
       swapSortBy={swapSortBy}
       searchBy={searchBy}
       sortBy={sortBy}
+      match={match}
     />);
     expect(wrapper.find('.search-block-wrapper').length).toBe(1);
   });

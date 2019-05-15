@@ -3,7 +3,6 @@
 exports[`<SearchBlock /> renders matching snapshot 1`] = `
 <SearchBlock
   fetchMovies={[MockFunction]}
-  history={Object {}}
   match={
     Object {
       "params": Object {
