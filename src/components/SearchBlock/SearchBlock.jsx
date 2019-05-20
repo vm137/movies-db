@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import SearchResults from '../SearchResults';
 import Logo from '../Logo';
 import Utils from '../Utils/Utils';
+import type { Movie } from '../../types';
 import COLOR from '../../constants/constants';
 import enterArrow from '../../img/enter-arrow.svg';
 import './style.scss';
@@ -12,8 +13,8 @@ type DefaultProps = {| history: {}, match: { params: {query: ''} } |};
 type Props = {
     ...DefaultProps,
   fetchMovies: Function,
-  movies: Object,
-  totalR: Object,
+  movies: Array<Movie>,
+  totalR: number,
   swapSearchBy: Function,
   swapSortBy: Function,
   searchBy: Boolean,
@@ -23,7 +24,7 @@ type Props = {
 };
 
 type State = {
-  inputValue: Object
+  inputValue: string
 };
 
 export default class SearchBlock extends Component<Props, State> {

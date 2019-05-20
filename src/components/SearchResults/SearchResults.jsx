@@ -2,10 +2,11 @@
 
 import React from 'react';
 import MovieCard from '../MovieCard';
+import type { Movie } from '../../types';
 import './style.scss';
 
 type Props = {
-  moviesR: Object
+  moviesR: Array<Movie>
 }
 
 const SearchResults = ({ moviesR }: Props) => (

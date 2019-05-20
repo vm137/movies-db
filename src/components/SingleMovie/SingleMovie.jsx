@@ -2,12 +2,13 @@
 
 import React, { PureComponent } from 'react';
 import Logo from '../Logo';
+import type { Movie } from '../../types';
 import './style.scss';
 
 type DefaultProps = {| history: {}, match: { params: {id: ''} } |};
 type Props = {
   ...DefaultProps,
-  movieR: Object,
+  movieR: Movie,
   fetchSingleMovie: Function,
   eraseSingleMovieAction: Function,
   history: Object,

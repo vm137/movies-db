@@ -1,12 +1,13 @@
 // @flow
 
 import React, { PureComponent } from 'react';
+import type { Movie } from '../../types';
 import './style.scss';
 
 type DefaultProps = {| history: {} |};
 type Props = {
   ...DefaultProps,
-  movie: Object,
+  movie: Movie,
   history: Object
 };
 
