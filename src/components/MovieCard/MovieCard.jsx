@@ -1,20 +1,20 @@
+// @flow
+
 import React, { PureComponent } from 'react';
-import PropTypes from 'prop-types';
+import type { Movie } from '../../types';
 import './style.scss';
 
-export default class MovieCard extends PureComponent {
-  static propTypes = {
-    movie: PropTypes.objectOf(PropTypes.any).isRequired,
-    history: PropTypes.objectOf(PropTypes.any),
-  };
+type DefaultProps = {| history: {} |};
+type Props = {
+  ...DefaultProps,
+  movie: Movie,
+  history: Object
+};
 
-  static defaultProps = {
-    history: {},
-  };
-
-  constructor(props) {
+export default class MovieCard extends PureComponent<Props> {
+  constructor(props: Props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    (this: Object).handleClick = this.handleClick.bind(this);
   }
 
   handleClick() {
