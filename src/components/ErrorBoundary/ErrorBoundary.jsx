@@ -7,8 +7,8 @@ type Props = {
 }
 
 type State = {
-  error: Object,
-  errorInfo: Object
+  error: string,
+  errorInfo: string
 }
 
 export default class ErrorBoundary extends React.Component<Props, State> {
